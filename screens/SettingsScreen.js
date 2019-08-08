@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   View,
-  Text,
   Image,
-  TouchableNativeFeedback,
-  Dimensions,
   ScrollView,
   StatusBar,
   ActivityIndicator
@@ -13,11 +10,9 @@ import {
 import Prismic from "prismic-javascript";
 import { PRISMIC_URL, PRISMIC_SECRET } from "react-native-dotenv";
 
-export default function SettingsScreen({ navigation }) {
+export default function SettingsScreen() {
   const [loading, setLoading] = useState(true);
   const [wallpapers, setWallpapers] = useState(null);
-
-  console.log(wallpapers);
 
   const asyncPrismic = async () => {
     const PrismicConnection = await Prismic.getApi(PRISMIC_URL, {
@@ -36,10 +31,6 @@ export default function SettingsScreen({ navigation }) {
   useEffect(() => {
     asyncPrismic();
   }, []);
-
-  //const { navigate } = navigation;
-  const dimensionsHalfScreenWidth = Dimensions.get("window").width / 2;
-  const dimensionsHeight = dimensionsHalfScreenWidth / 1.777;
 
   if (loading)
     return (
