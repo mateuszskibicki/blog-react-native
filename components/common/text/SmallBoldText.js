@@ -2,7 +2,7 @@ import React from "react";
 import { Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
-const MediumText = props => {
+const SmallBoldText = props => {
   return (
     <Text
       {...props}
@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
   text: {
     marginBottom: 24,
     color: StylesMain.textColor,
-    fontSize: 32,
+    fontSize: 14,
+    fontWeight: "600",
     fontFamily: StylesMain.fontFamily
   }
 });
 
-export default MediumText;
+export default SmallBoldText;
