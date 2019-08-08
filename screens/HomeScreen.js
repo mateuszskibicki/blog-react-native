@@ -1,17 +1,16 @@
 import React from "react";
+import {
+  SmallText,
+  SmallBoldText,
+  NormalText,
+  NormalBoldText,
+  MediumText,
+  MediumBoldText,
+  BigText,
+  BigBoldText
+} from "../components/common/text";
 import ContainerScroll from "../components/common/layout/ContainerScroll";
-
-import SmallText from "../components/common/text/SmallText";
-import SmallBoldText from "../components/common/text/SmallBoldText";
-
-import NormalText from "../components/common/text/NormalText";
-import NormalBoldText from "../components/common/text/NormalBoldText";
-
-import MediumText from "../components/common/text/MediumText";
-import MediumBoldText from "../components/common/text/MediumBoldText";
-
-import BigText from "../components/common/text/BigText";
-import BigBoldText from "../components/common/text/BigBoldText";
+import ButtonPrimary from "../components/common/buttons/ButtonPrimary";
 
 export default function HomeScreen() {
   return (
@@ -35,6 +34,14 @@ export default function HomeScreen() {
       <BigText>BigText</BigText>
       <BigBoldText>BigBoldText</BigBoldText>
       <BigBoldText>BigBoldText</BigBoldText>
+      <ButtonPrimary>One two three</ButtonPrimary>
+      <ButtonPrimary>One two three</ButtonPrimary>
+      <ButtonPrimary right>One two three aa</ButtonPrimary>
+      <ButtonPrimary block>One two three aa</ButtonPrimary>
+      <ButtonPrimary right>One two three aa</ButtonPrimary>
+      <ButtonPrimary center onPress={() => console.log(123)}>
+        console!
+      </ButtonPrimary>
     </ContainerScroll>
   );
 }

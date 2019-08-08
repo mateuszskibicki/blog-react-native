@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
@@ -23,5 +24,10 @@ const styles = StyleSheet.create({
     fontFamily: StylesMain.fontFamily
   }
 });
+
+SmallText.propTypes = {
+  style: PropTypes.object,
+  secondary: PropTypes.bool
+};
 
 export default SmallText;

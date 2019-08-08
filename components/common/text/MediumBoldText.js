@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
@@ -20,9 +21,14 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     color: StylesMain.textColor,
     fontSize: 32,
-    fontWeight: "600",
+    fontWeight: StylesMain.textBoldWeight,
     fontFamily: StylesMain.fontFamily
   }
 });
+
+MediumBoldText.propTypes = {
+  style: PropTypes.object,
+  secondary: PropTypes.bool
+};
 
 export default MediumBoldText;

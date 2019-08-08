@@ -1,5 +1,6 @@
 import React from "react";
 import { View, ScrollView, StyleSheet } from "react-native";
+import StylesMain from "../../../constants/StylesMain";
 
 const ContainerScroll = props => {
   return (
@@ -17,14 +18,14 @@ const ContainerScroll = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5"
+    backgroundColor: StylesMain.backgroundColor
   },
   contentContainer: {
-    paddingTop: 32,
-    paddingBottom: 32,
+    paddingTop: 48,
+    paddingBottom: 24,
     paddingLeft: 16,
     paddingRight: 16,
-    backgroundColor: "#f5f5f5"
+    backgroundColor: StylesMain.backgroundColor
   }
 });
 

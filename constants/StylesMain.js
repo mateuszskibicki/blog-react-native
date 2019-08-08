@@ -1,5 +1,19 @@
 export default {
-  textcolor: "#343a40",
+  textColor: "#343a40",
   secondaryTextColor: "#6c757d",
-  fontFamily: "titillium-web"
+  whiteTextColor: "#fafafa",
+  textBoldWeight: "600",
+  fontFamily: "titillium-web",
+  backgroundColor: "#fafafa",
+  primaryGreen: "#00986f",
+  shadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+    elevation: 7
+  }
 };
