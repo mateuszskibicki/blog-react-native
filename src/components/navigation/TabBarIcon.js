@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import StylesMain from "../../constants/StylesMain";
 
-const TabBarIcon = ({ name, focused }) => {
+const TabBarIcon = React.memo(({ name, focused }) => {
   if (!name) return null;
   return (
     <Ionicons
@@ -14,7 +14,7 @@ const TabBarIcon = ({ name, focused }) => {
       color={focused ? StylesMain.primaryGreen : StylesMain.textColor}
     />
   );
-};
+});
 
 TabBarIcon.propTypes = {
   name: PropTypes.string,

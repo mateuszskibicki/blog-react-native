@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SmallText,
   NormalText,
@@ -9,6 +9,8 @@ import ContainerScroll from "../components/common/layout/ContainerScroll";
 import ButtonPrimary from "../components/common/buttons/ButtonPrimary";
 
 export default function HomeScreen() {
+  const [number, addNumber] = useState(1);
+
   return (
     <ContainerScroll>
       <SmallText>
@@ -25,6 +27,7 @@ export default function HomeScreen() {
       <NormalText>NormalText</NormalText>
       <MediumText>MediumText</MediumText>
       <MediumText>MediumText</MediumText>
+      <BigText>{number}</BigText>
       <BigText>BigText</BigText>
       <BigText>BigText</BigText>
       <BigText bold>BigText bold</BigText>
@@ -36,7 +39,7 @@ export default function HomeScreen() {
       <ButtonPrimary right>One two three aa</ButtonPrimary>
       <ButtonPrimary block>One two three aa</ButtonPrimary>
       <ButtonPrimary right>One two three aa</ButtonPrimary>
-      <ButtonPrimary center onPress={() => console.log(1244333)}>
+      <ButtonPrimary center onPress={() => addNumber(number + 1)}>
         console!
       </ButtonPrimary>
     </ContainerScroll>

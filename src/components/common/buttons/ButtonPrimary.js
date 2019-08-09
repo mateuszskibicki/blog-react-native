@@ -51,4 +51,4 @@ ButtonPrimary.propTypes = {
   block: PropTypes.bool
 };
 
-export default ButtonPrimary;
+export default React.memo(ButtonPrimary);

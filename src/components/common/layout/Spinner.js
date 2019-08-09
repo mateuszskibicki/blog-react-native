@@ -2,11 +2,11 @@ import React from "react";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
-const Spinner = React.memo(() => (
+const Spinner = () => (
   <View style={styles.containerSpinner}>
     <ActivityIndicator size={100} color={StylesMain.primaryGreen} />
   </View>
-));
+);
 
 const styles = StyleSheet.create({
   containerSpinner: {
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Spinner;
+export default React.memo(Spinner);

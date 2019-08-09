@@ -4,7 +4,11 @@ import { Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
 const SmallText = props => {
-  if (!props.children || typeof props.children !== "string") return null;
+  if (
+    !props.children ||
+    !(typeof props.children === "string" || typeof props.children === "number")
+  )
+    return null;
   return (
     <Text
       {...props}
@@ -33,4 +37,4 @@ SmallText.propTypes = {
   bold: PropTypes.bool
 };
 
-export default SmallText;
+export default React.memo(SmallText);
