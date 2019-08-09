@@ -4,13 +4,15 @@ import { Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
 const MediumText = props => {
+  if (!props.children || typeof props.children !== "string") return null;
   return (
     <Text
       {...props}
       style={[
         styles.text,
         props.style,
-        props.secondary && { color: StylesMain.secondaryTextColor }
+        props.secondary && { color: StylesMain.secondaryTextColor },
+        props.bold && { fontWeight: StylesMain.textBoldWeight }
       ]}
     />
   );
@@ -27,7 +29,8 @@ const styles = StyleSheet.create({
 
 MediumText.propTypes = {
   style: PropTypes.object,
-  secondary: PropTypes.bool
+  secondary: PropTypes.bool,
+  bold: PropTypes.bool
 };
 
 export default MediumText;

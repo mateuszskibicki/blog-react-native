@@ -1,13 +1,9 @@
 import React from "react";
 import {
   SmallText,
-  SmallBoldText,
   NormalText,
-  NormalBoldText,
   MediumText,
-  MediumBoldText,
-  BigText,
-  BigBoldText
+  BigText
 } from "../components/common/text";
 import ContainerScroll from "../components/common/layout/ContainerScroll";
 import ButtonPrimary from "../components/common/buttons/ButtonPrimary";
@@ -15,25 +11,26 @@ import ButtonPrimary from "../components/common/buttons/ButtonPrimary";
 export default function HomeScreen() {
   return (
     <ContainerScroll>
-      <SmallText>SmallText</SmallText>
+      <SmallText>
+        <MediumText>MediumText</MediumText>
+      </SmallText>
+      <SmallText>SmallText1</SmallText>
       <SmallText>SmallText</SmallText>
       <SmallText secondary>sss secondary</SmallText>
-      <SmallBoldText>SmallBoldText</SmallBoldText>
-      <SmallBoldText>SmallBoldText</SmallBoldText>
-      <SmallBoldText secondary>SmallBoldText secondary</SmallBoldText>
+      <SmallText secondary bold>
+        sss secondary and bold
+      </SmallText>
       <NormalText>NormalText</NormalText>
       <NormalText>aa</NormalText>
       <NormalText>NormalText</NormalText>
-      <NormalBoldText>NormalBoldText</NormalBoldText>
-      <NormalBoldText>NormalBoldText</NormalBoldText>
       <MediumText>MediumText</MediumText>
       <MediumText>MediumText</MediumText>
-      <MediumBoldText>MediumBoldText</MediumBoldText>
-      <MediumBoldText>MediumBoldText</MediumBoldText>
       <BigText>BigText</BigText>
       <BigText>BigText</BigText>
-      <BigBoldText>BigBoldText</BigBoldText>
-      <BigBoldText>BigBoldText</BigBoldText>
+      <BigText bold>BigText bold</BigText>
+      <BigText secondary bold>
+        BigText secondary bold
+      </BigText>
       <ButtonPrimary>One two three</ButtonPrimary>
       <ButtonPrimary>One two three</ButtonPrimary>
       <ButtonPrimary right>One two three aa</ButtonPrimary>
