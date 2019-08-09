@@ -1,16 +1,23 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { View, ScrollView, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
+import Spinner from "./Spinner";
 
 const ContainerScroll = props => {
   return (
     <View style={styles.container}>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={styles.contentContainer}
-      >
-        {props.children}
-      </ScrollView>
+      {props.loading ? (
+        <Spinner />
+      ) : (
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+        >
+          {props.children}
+        </ScrollView>
+      )}
     </View>
   );
 };
@@ -29,4 +36,14 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ContainerScroll;
+const mapStateToProps = ({ loading }) => loading;
+
+ContainerScroll.propTypes = {
+  loading: PropTypes.bool,
+  children: PropTypes.any
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(ContainerScroll);

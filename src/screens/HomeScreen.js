@@ -36,7 +36,7 @@ export default function HomeScreen() {
       <ButtonPrimary right>One two three aa</ButtonPrimary>
       <ButtonPrimary block>One two three aa</ButtonPrimary>
       <ButtonPrimary right>One two three aa</ButtonPrimary>
-      <ButtonPrimary center onPress={() => console.log(12333)}>
+      <ButtonPrimary center onPress={() => console.log(1244333)}>
         console!
       </ButtonPrimary>
     </ContainerScroll>
