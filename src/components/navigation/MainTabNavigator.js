@@ -7,8 +7,10 @@ import {
 
 import TabBarIcon from "./TabBarIcon";
 import HomeScreen from "../../screens/HomeScreen";
-import LinksScreen from "../../screens/LinksScreen";
-import SettingsScreen from "../../screens/SettingsScreen";
+import ArticlesScreen from "../../screens/ArticlesScreen";
+import AboutScreen from "../../screens/AboutScreen";
+
+import StylesMain from "../../constants/StylesMain";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -24,48 +26,63 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: "Home",
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={"md-information-circle"} />
-  )
+  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"md-home"} />
 };
 
 HomeStack.path = "";
 
-const LinksStack = createStackNavigator(
+const ArticlesStack = createStackNavigator(
   {
-    Links: LinksScreen
+    Articles: ArticlesScreen
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: "Links",
-  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"md-link"} />
-};
-
-LinksStack.path = "";
-
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen
-  },
-  config
-);
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: "Settings",
+ArticlesStack.navigationOptions = {
+  tabBarLabel: "Articles",
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={"md-options"} />
+    <TabBarIcon focused={focused} name={"md-albums"} />
   )
 };
 
-SettingsStack.path = "";
+ArticlesStack.path = "";
 
-const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack
-});
+const AboutStack = createStackNavigator(
+  {
+    About: AboutScreen
+  },
+  config
+);
+
+AboutStack.navigationOptions = {
+  tabBarLabel: "About",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={"md-contact"} />
+  )
+};
+
+AboutStack.path = "";
+
+const tabNavigator = createBottomTabNavigator(
+  {
+    HomeStack,
+    ArticlesStack,
+    AboutStack
+  },
+  {
+    tabBarOptions: {
+      style: {
+        ...StylesMain.bigShadow,
+        borderTopColor: "#eee",
+        borderTopWidth: 2
+      },
+      labelStyle: {
+        fontWeight: StylesMain.fontWeight
+      },
+      activeTintColor: StylesMain.primaryGreen
+    }
+  }
+);
 
 tabNavigator.path = "";
 

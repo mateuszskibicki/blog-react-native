@@ -4,7 +4,7 @@ import { ScrollView, Text, StyleSheet } from "react-native";
 export default function LinksScreen() {
   return (
     <ScrollView style={styles.container}>
-      <Text>link</Text>
+      <Text>articles screen</Text>
     </ScrollView>
   );
 }
