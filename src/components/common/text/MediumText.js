@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
 
 MediumText.propTypes = {
   style: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   secondary: PropTypes.bool,
   bold: PropTypes.bool
 };

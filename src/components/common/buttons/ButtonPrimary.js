@@ -3,17 +3,33 @@ import PropTypes from "prop-types";
 import { TouchableNativeFeedback, View, Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
-const ButtonPrimary = props => {
+const ButtonPrimary = ({
+  onPress,
+  children,
+  style,
+  right,
+  center,
+  block,
+  small
+}) => {
+  //check if necessary exists
+  if (
+    !children ||
+    !(typeof children === "string" || typeof children === "number")
+  )
+    return null;
+
+  //return component
   return (
-    <TouchableNativeFeedback onPress={props.onPress}>
+    <TouchableNativeFeedback onPress={onPress}>
       <View
         style={[
           styles.button,
-          props.style,
-          props.right && { alignSelf: "flex-end" },
-          props.center && { alignSelf: "center" },
-          props.block && { alignSelf: null, alignItems: "center" },
-          props.small && {
+          style,
+          right && { alignSelf: "flex-end" },
+          center && { alignSelf: "center" },
+          block && { alignSelf: null, alignItems: "center" },
+          small && {
             paddingVertical: 4,
             paddingHorizontal: 8,
             marginBottom: 16
@@ -21,12 +37,9 @@ const ButtonPrimary = props => {
         ]}
       >
         <Text
-          style={[
-            styles.text,
-            props.small && { fontSize: 16, fontWeight: "400" }
-          ]}
+          style={[styles.text, small && { fontSize: 16, fontWeight: "400" }]}
         >
-          {props.children}
+          {children}
         </Text>
       </View>
     </TouchableNativeFeedback>
@@ -57,6 +70,7 @@ const styles = StyleSheet.create({
 
 ButtonPrimary.propTypes = {
   onPress: PropTypes.func,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   style: PropTypes.object,
   right: PropTypes.bool,
   center: PropTypes.bool,
