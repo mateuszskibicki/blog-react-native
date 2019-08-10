@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { TouchableNativeFeedback, View, Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
-const ButtonPrimary = props => {
+const ButtonSecondary = props => {
   return (
     <TouchableNativeFeedback onPress={props.onPress}>
       <View
@@ -40,14 +40,16 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     paddingVertical: 8,
     paddingHorizontal: 16,
-    backgroundColor: StylesMain.primaryGreen,
+    backgroundColor: StylesMain.backgroundColor,
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: StylesMain.secondaryTextColor,
     shadowColor: "#000",
     marginBottom: 24,
     ...StylesMain.shadow
   },
   text: {
-    color: StylesMain.whiteTextColor,
+    color: StylesMain.secondaryTextColor,
     fontWeight: StylesMain.textBoldWeight,
     fontFamily: StylesMain.fontFamily,
     fontSize: 18,
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
   }
 });
 
-ButtonPrimary.propTypes = {
+ButtonSecondary.propTypes = {
   onPress: PropTypes.func,
   style: PropTypes.object,
   right: PropTypes.bool,
@@ -64,4 +66,4 @@ ButtonPrimary.propTypes = {
   small: PropTypes.bool
 };
 
-export default React.memo(ButtonPrimary);
+export default React.memo(ButtonSecondary);
