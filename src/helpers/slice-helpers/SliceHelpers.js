@@ -1,19 +1,17 @@
-import { textBlockSlice } from "./single-slice-helpers/textBlockSlice";
-import { codeSlice } from "./single-slice-helpers/codeSlice";
-import { singleMediaSlice } from "./single-slice-helpers/singleMediaSlice";
-import { multipleMediaSlice } from "./single-slice-helpers/multipleMediaSlice";
-import { imageSlice } from "./single-slice-helpers/imageSlice";
-
-import { TAllSlices } from "../../types/slices.types";
+// import { textBlockSlice } from "./single-slice-helpers/textBlockSlice";
+// import { codeSlice } from "./single-slice-helpers/codeSlice";
+// import { singleMediaSlice } from "./single-slice-helpers/singleMediaSlice";
+// import { multipleMediaSlice } from "./single-slice-helpers/multipleMediaSlice";
+// import { imageSlice } from "./single-slice-helpers/imageSlice";
 
 // Remove null from array (locally when testing)
-export const filterArray = (array: Array<TAllSlices>): Array<TAllSlices> => {
-  let index: number = -1,
-    arr_length: Array<number> | number = array ? array.length : 0,
-    resIndex: number = -1,
-    result: Array<any> = [];
+export const filterArray = array => {
+  let index = -1,
+    arr_length = array ? array.length : 0,
+    resIndex = -1,
+    result = [];
   while (++index < arr_length) {
-    let value: object = array[index];
+    let value = array[index];
     if (value) {
       result[++resIndex] = value;
     }
@@ -21,24 +19,22 @@ export const filterArray = (array: Array<TAllSlices>): Array<TAllSlices> => {
   return result;
 };
 
-export const sliceHelper = (body: Array<any>): Array<TAllSlices> | null => {
+export const sliceHelper = body => {
   if (!body || body.length === 0) return null;
 
-  let slicesData: Array<any>;
+  let slicesData;
 
   // eslint-disable-next-line array-callback-return
-  slicesData = body.map(
-    (slice: any): TAllSlices | null => {
-      if (slice.slice_type === "text_block") return textBlockSlice(slice);
-      if (slice.slice_type === "image") return imageSlice(slice);
-      if (slice.slice_type === "code_component") return codeSlice(slice);
-      if (slice.slice_type === "single_media_block")
-        return singleMediaSlice(slice);
-      if (slice.slice_type === "multiple_media_blocks")
-        return multipleMediaSlice(slice);
-      return null;
-    }
-  );
+  slicesData = body.map(slice => {
+    // if (slice.slice_type === "text_block") return textBlockSlice(slice);
+    // if (slice.slice_type === "image") return imageSlice(slice);
+    // if (slice.slice_type === "code_component") return codeSlice(slice);
+    // if (slice.slice_type === "single_media_block")
+    //   return singleMediaSlice(slice);
+    // if (slice.slice_type === "multiple_media_blocks")
+    //   return multipleMediaSlice(slice);
+    return null;
+  });
 
   //Return array of objects filtered if there is any null
   return filterArray(slicesData);

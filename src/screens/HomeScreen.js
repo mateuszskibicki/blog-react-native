@@ -1,67 +1,44 @@
-import React from "react";
-import { View } from "react-native";
-import {
-  SmallText,
-  NormalText,
-  MediumText,
-  BigText
-} from "../components/common/text";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { getAllArticles } from "../store/actions/articles/articlesActions";
 import ContainerScroll from "../components/common/layout/ContainerScroll";
-import {
-  ButtonPrimary,
-  ButtonSecondary,
-  ButtonIcon
-} from "../components/common/buttons";
-import {
-  ImgContainer,
-  ImgFullWidth,
-  ImgRounded
-} from "../components/common/images";
-import CodeScrollSide from "../components/common/code-component/CodeScrollSide";
+import HomeScreenContainer from "../components/screen-container/HomeScreenContainer";
 
-import ListUL from "../components/common/lists/ListUL";
+const HomeScreen = ({ articles, getAllArticles }) => {
+  // grab last 3 articles
+  useEffect(() => {
+    getAllArticles({ lastThree: true });
+  }, []);
 
-const HomeScreen = () => {
+  //display component
   return (
     <ContainerScroll>
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          marginBottom: 32
-        }}
-      >
-        <ButtonIcon small name={"md-contact"} />
-        <ButtonIcon name={"md-contact"} />
-        <ButtonIcon big name={"md-contact"} />
-        <ButtonIcon big name={"md-contact"} />
-      </View>
-
-      <ListUL
-        title="Daaamn title"
-        list={[
-          "Lorem asd asd sdsdasda asd",
-          "Lorem asd asd sdsdasda asd",
-          "Lorem asd asd sdsdasda asd",
-          "Lorem asd asd sdsdasda asd",
-          "Lorem asd asd sdsdasda asd",
-          "JavaScript lorem10 lorem10 lorem10 lorem10 lorem10"
-        ]}
-      />
-
-      <ImgFullWidth
-        big
-        imageURL="https://mateusz-skibicki-blog.cdn.prismic.io/mateusz-skibicki-blog/73af4079af847cf9eac05d078a95f9a36b668c6a_jonathan-daniels-cdvg9f96kyg-unsplash.jpg"
-      />
+      <HomeScreenContainer articles={articles} />
     </ContainerScroll>
   );
 };
 
+//nav options
 HomeScreen.navigationOptions = {
   header: null
 };
 
-export default HomeScreen;
+//proptypes
+HomeScreen.propTypes = {
+  getAllArticles: PropTypes.func
+};
+
+//Redux logic
+const mapStateToProps = ({ articles }) => {
+  return { articles };
+};
+
+const mapDispatchToProps = {
+  getAllArticles
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeScreen);

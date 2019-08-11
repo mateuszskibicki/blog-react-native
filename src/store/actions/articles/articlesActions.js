@@ -1,17 +1,15 @@
 import Prismic from "prismic-javascript";
+import { PRISMIC_URL, PRISMIC_SECRET } from "react-native-dotenv";
 import {
   GET_ALL_ARTICLES,
-  GET_ALL_ARTICLES_INITIAL_STATE,
+  GET_3_LAST_ARTICLES,
   SET_ERROR_ALL_ARTICLES_FALSE,
   SET_ERROR_ALL_ARTICLES_TRUE
 } from "../types";
 // loading
 import { setLoadingStart, setLoadingStop } from "../common/loadingActions";
 // helpers
-import {
-  articlesListHelper,
-  allArticlesPageSEOHelper
-} from "../../../helpers/articles/ArticlesHelpers";
+import { articlesListHelper } from "../../../helpers/articles/ArticlesHelpers";
 
 // Set articles error to true
 export const setArticlesErrorToTrue = () => dispatch => {
@@ -28,12 +26,13 @@ export const getAllArticles = ({
   page = "1",
   category = null,
   searchText = null,
-  SEO = null
-}) => async dispatch => {
+  lastThree = false
+} = {}) => async dispatch => {
   try {
-    // Start loading
+    //Start loading
     dispatch(setLoadingStart());
 
+    //Check if page exists
     if (!Number(page)) {
       dispatch({ type: SET_ERROR_ALL_ARTICLES_TRUE });
       dispatch(setLoadingStop());
@@ -44,8 +43,8 @@ export const getAllArticles = ({
     const pageNumber = !Number(page) ? "1" : page;
 
     //Prismic connection
-    const PrismicEndpoint = process.env.REACT_APP_PRISMIC_API_ENDPOINT || null;
-    const PrismicToken = process.env.REACT_APP_PRISMIC_API_TOKEN || null;
+    const PrismicEndpoint = PRISMIC_URL || null;
+    const PrismicToken = PRISMIC_SECRET || null;
 
     //If no settings -> return error
     if (!PrismicEndpoint || !PrismicToken) {
@@ -60,10 +59,13 @@ export const getAllArticles = ({
 
     //Empty data at the very beginning
     let data = null;
-    let SEOdata = SEO || null;
 
     //Articles query
-    if (!category && !searchText) {
+    if (lastThree) {
+      data = await getLast3Articles({
+        prismicConnection
+      });
+    } else if (!category && !searchText) {
       // all articles
       data = await getAllArticlesPrismicQuery({
         prismicConnection,
@@ -93,12 +95,6 @@ export const getAllArticles = ({
       });
     }
 
-    //Check if SEO already exists, if no grab it from the prismic
-    if (!SEOdata) {
-      SEOdata = await getAllArticlesSEOPrismicQuery({ prismicConnection });
-      SEOdata = allArticlesPageSEOHelper(SEOdata);
-    }
-
     //If there is no articles data -> put error true and stop loading
     if (!data) {
       dispatch(setArticlesErrorToTrue());
@@ -108,20 +104,16 @@ export const getAllArticles = ({
     //Sanitize data
     const articlesData = articlesListHelper(data);
 
-    //Dispatch data to the reducer -> if search or category with new initial state, or with all pages and data
-    if (category || searchText) {
+    //If last 3 articles
+    if (lastThree) {
       dispatch({
-        type: GET_ALL_ARTICLES_INITIAL_STATE,
+        type: GET_3_LAST_ARTICLES,
         payload: {
-          articlesData,
-          page: pageNumber,
-          totalPages: data.total_pages,
-          category,
-          searchText,
-          SEO: SEOdata
+          articlesData
         }
       });
     } else {
+      //Dispatch data to the reducer -> if search or category with new initial state, or with all pages and data
       dispatch({
         type: GET_ALL_ARTICLES,
         payload: {
@@ -129,8 +121,7 @@ export const getAllArticles = ({
           page: pageNumber,
           totalPages: data.total_pages,
           category,
-          searchText,
-          SEO: SEOdata
+          searchText
         }
       });
     }
@@ -147,18 +138,17 @@ export const getAllArticles = ({
 };
 
 export const queryCommonPart = {
-  orderings: "[my.single-article.date desc]",
+  orderings: "[my.single-article-mobile.date desc]",
   fetch: [
-    "single-article.uid",
-    "single-article.title",
-    "single-article.short_description",
-    "single-article.series",
-    "single-article.categories",
-    "single-article.tags",
-    "single-article.date",
-    "single-article.small_img",
-    "single-article.xs_img",
-    "single-article.author"
+    "single-article-mobile.uid",
+    "single-article-mobile.title",
+    "single-article-mobile.short_description",
+    "single-article-mobile.categories",
+    "single-article-mobile.tags",
+    "single-article-mobile.date",
+    "single-article-mobile.small_img",
+    "single-article-mobile.xs_img",
+    "single-article-mobile.author"
   ],
   fetchLinks: [
     "author.uid",
@@ -168,6 +158,19 @@ export const queryCommonPart = {
   ]
 };
 
+export const getLast3Articles = async ({ prismicConnection }) => {
+  if (!prismicConnection.query) return null;
+
+  return await prismicConnection.query(
+    Prismic.Predicates.at("document.type", "single-article-mobile"),
+    {
+      page: 1,
+      ...queryCommonPart,
+      pageSize: 3
+    }
+  );
+};
+
 export const getAllArticlesPrismicQuery = async ({
   prismicConnection,
   page
@@ -175,7 +178,7 @@ export const getAllArticlesPrismicQuery = async ({
   if (!prismicConnection.query) return null;
 
   return await prismicConnection.query(
-    Prismic.Predicates.at("document.type", "single-article"),
+    Prismic.Predicates.at("document.type", "single-article-mobile"),
     {
       page,
       ...queryCommonPart
@@ -196,7 +199,7 @@ export const getAllArticlesByCategoryPrismicQuery = async ({
 
   return await prismicConnection.query(
     [
-      Prismic.Predicates.at("document.type", "single-article"),
+      Prismic.Predicates.at("document.type", "single-article-mobile"),
       Prismic.Predicates.fulltext("my.single-article.categories", category)
     ],
     {
@@ -219,7 +222,7 @@ export const getAllArticlesBySearchTextPrismicQuery = async ({
 
   return await prismicConnection.query(
     [
-      Prismic.Predicates.at("document.type", "single-article"),
+      Prismic.Predicates.at("document.type", "single-article-mobile"),
       Prismic.Predicates.fulltext("document", searchText)
     ],
     {
@@ -243,7 +246,7 @@ export const getAllArticlesByCategoryAndSearchTextPrismicQuery = async ({
 
   return await prismicConnection.query(
     [
-      Prismic.Predicates.at("document.type", "single-article"),
+      Prismic.Predicates.at("document.type", "single-article-mobile"),
       Prismic.Predicates.fulltext("my.single-article.categories", category),
       Prismic.Predicates.fulltext("document", searchText)
     ],
@@ -251,13 +254,5 @@ export const getAllArticlesByCategoryAndSearchTextPrismicQuery = async ({
       page,
       ...queryCommonPart
     }
-  );
-};
-
-export const getAllArticlesSEOPrismicQuery = async ({ prismicConnection }) => {
-  if (!prismicConnection.query) return null;
-
-  return await prismicConnection.query(
-    Prismic.Predicates.at("document.type", "all-articles-seo")
   );
 };

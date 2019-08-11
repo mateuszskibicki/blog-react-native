@@ -12,7 +12,6 @@ export const articlesListHelper = data => {
     uid: article.uid,
     title: TextHelper(article.data.title),
     short_description: TextHelper(article.data.short_description),
-    series: TextHelper(article.data.series),
     categories: TextHelper(article.data.categories),
     tags: TextHelper(article.data.tags),
     date: SmallTextHelper(article.data.date),

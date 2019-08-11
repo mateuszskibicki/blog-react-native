@@ -19,7 +19,9 @@ const MediumText = props => {
         styles.text,
         props.style,
         props.secondary && { color: StylesMain.secondaryTextColor },
-        props.bold && { fontWeight: StylesMain.textBoldWeight }
+        props.bold && { fontWeight: StylesMain.textBoldWeight },
+        props.center && { textAlign: "center" },
+        props.right && { textAlign: "right" }
       ]}
     />
   );
@@ -38,7 +40,9 @@ MediumText.propTypes = {
   style: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   secondary: PropTypes.bool,
-  bold: PropTypes.bool
+  bold: PropTypes.bool,
+  center: PropTypes.bool,
+  right: PropTypes.bool
 };
 
 export default React.memo(MediumText);
