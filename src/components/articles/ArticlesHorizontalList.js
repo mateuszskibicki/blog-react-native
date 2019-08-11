@@ -1,16 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ArticlesHorizontalList from "../articles/ArticlesHorizontalList";
+import { View, ScrollView, StyleSheet } from "react-native";
+import { MediumText } from "../common/text";
+import ArticlesListSingle from "./ArticlesListSingle";
 
-const HomeScreenContainer = ({ articles } = {}) => {
-  console.log(articles);
-  if (!articles) return null;
+import StylesMain from "../../constants/StylesMain";
+
+const ArticlesHorizontalList = ({ articles, title }) => {
+  if (!articles || !Array.isArray(articles) || articles.length === 0)
+    return null;
+
   return (
-    <ArticlesHorizontalList title={"Last 3 articles:"} articles={articles} />
+    <View style={styles.container}>
+      {title && (
+        <MediumText center bold>
+          {title}
+        </MediumText>
+      )}
+      <ScrollView horizontal={true}>
+        {articles.map(article => (
+          <ArticlesListSingle article={article} key={article.uid} />
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 
-HomeScreenContainer.propTypes = {
+const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: -16
+  }
+});
+
+ArticlesHorizontalList.propTypes = {
   articles: PropTypes.arrayOf(
     PropTypes.shape({
       uid: PropTypes.string,
@@ -41,4 +63,4 @@ HomeScreenContainer.propTypes = {
   )
 };
 
-export default HomeScreenContainer;
+export default ArticlesHorizontalList;

@@ -14,7 +14,7 @@ const HomeScreen = ({ articles, getAllArticles }) => {
   //display component
   return (
     <ContainerScroll>
-      <HomeScreenContainer articles={articles} />
+      <HomeScreenContainer articles={articles.lastThree} />
     </ContainerScroll>
   );
 };

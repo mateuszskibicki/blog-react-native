@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   text: {
     marginBottom: 24,
     color: StylesMain.textColor,
-    fontSize: 14,
+    fontSize: 16,
     fontFamily: StylesMain.fontFamily
   }
 });

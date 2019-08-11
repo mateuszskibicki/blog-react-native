@@ -9,14 +9,29 @@ const ImgContainer = ({
   imageStyle,
   imageURL,
   small,
-  big
+  big,
+  noShadow
 }) => {
   //check if necessary exists
   if (!imageURL || typeof imageURL !== "string") return null;
 
+  console.log(noShadow);
+
   //return component
   return (
-    <View style={[styles.container, styleContainer]}>
+    <View
+      style={[
+        styles.container,
+        styleContainer,
+        noShadow && {
+          shadowColor: null,
+          shadowOffset: null,
+          shadowOpacity: null,
+          shadowRadius: null,
+          elevation: null
+        }
+      ]}
+    >
       <ImageBackground
         source={{
           uri: imageURL
@@ -25,7 +40,7 @@ const ImgContainer = ({
           styles.imageWrapper,
           imageWrapper,
           small && {
-            height: 200
+            height: 160
           },
           big && {
             height: 500
@@ -58,7 +73,8 @@ ImgContainer.propTypes = {
   imageStyle: PropTypes.object,
   imageURL: PropTypes.string,
   small: PropTypes.bool,
-  big: PropTypes.bool
+  big: PropTypes.bool,
+  noShadow: PropTypes.bool
 };
 
 export default React.memo(ImgContainer);
