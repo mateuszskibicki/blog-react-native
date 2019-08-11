@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View } from "react-native";
 import {
   SmallText,
@@ -21,9 +21,7 @@ import CodeScrollSide from "../components/common/code-component/CodeScrollSide";
 
 import ListUL from "../components/common/lists/ListUL";
 
-export default function HomeScreen() {
-  const [number, addNumber] = useState(1);
-
+const HomeScreen = () => {
   return (
     <ContainerScroll>
       <View
@@ -60,8 +58,10 @@ export default function HomeScreen() {
       />
     </ContainerScroll>
   );
-}
+};
 
 HomeScreen.navigationOptions = {
   header: null
 };
+
+export default HomeScreen;

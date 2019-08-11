@@ -20,6 +20,7 @@
     "expo-constants": "6.0.0",
     "expo-font": "~6.0.0",
     "expo-web-browser": "6.0.0",
+    "prismic-helpers-sanitize": "^1.1.2",
     "prismic-javascript": "^2.1.1",
     "prop-types": "^15.7.2",
     "react": "16.8.3",

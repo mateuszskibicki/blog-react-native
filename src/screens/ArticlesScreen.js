@@ -1,16 +1,16 @@
 import React from "react";
 import { ScrollView, Text, StyleSheet } from "react-native";
 
-export default function LinksScreen() {
+const ArticlesScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <Text>articles screen</Text>
     </ScrollView>
   );
-}
+};
 
-LinksScreen.navigationOptions = {
-  title: "Links"
+ArticlesScreen.navigationOptions = {
+  header: null
 };
 
 const styles = StyleSheet.create({
@@ -20,3 +20,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   }
 });
+
+export default ArticlesScreen;
