@@ -1,6 +1,7 @@
 export default {
   textColor: "#343a40",
   secondaryTextColor: "#6c757d",
+  whiteSmoke: "#f5f5f5",
   whiteTextColor: "#fafafa",
   textBoldWeight: "600",
   fontFamily: "titillium-web",

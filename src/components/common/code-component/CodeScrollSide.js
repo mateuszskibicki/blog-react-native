@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
   scrollContainer: {
     marginLeft: -16,
     marginRight: -16,
-    marginBottom: 24
-    //...StylesMain.shadow
+    marginBottom: 24,
+    ...StylesMain.bigShadow
   },
   container: {
     padding: 16,

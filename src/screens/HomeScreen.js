@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { View } from "react-native";
 import {
   SmallText,
   NormalText,
@@ -6,8 +7,16 @@ import {
   BigText
 } from "../components/common/text";
 import ContainerScroll from "../components/common/layout/ContainerScroll";
-import { ButtonPrimary, ButtonSecondary } from "../components/common/buttons";
-import { ImgContainer, ImgFullWidth } from "../components/common/images";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+  ButtonIcon
+} from "../components/common/buttons";
+import {
+  ImgContainer,
+  ImgFullWidth,
+  ImgRounded
+} from "../components/common/images";
 import CodeScrollSide from "../components/common/code-component/CodeScrollSide";
 
 export default function HomeScreen() {
@@ -15,50 +24,29 @@ export default function HomeScreen() {
 
   return (
     <ContainerScroll>
-      <NormalText>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure,
-        sapiente?
-      </NormalText>
-      <BigText>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure,
-        sapiente?
-      </BigText>
-      <ButtonPrimary center onPress={() => addNumber(number + 1)}>
-        console!
-      </ButtonPrimary>
-      <ButtonSecondary>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
-        error!
-      </ButtonSecondary>
-      <ButtonPrimary>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
-        error!
-      </ButtonPrimary>
-      <CodeScrollSide
-        code={`
-<View style={styles.helpContainer}>
-  <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-    <Text style={styles.helpLinkText}>
-      Help, it didn’t automatically reload!
-    </Text>
-  </TouchableOpacity>
-</View>
-      `}
-      />
-      <ImgContainer imageURL="https://mateusz-skibicki-blog.cdn.prismic.io/mateusz-skibicki-blog/73af4079af847cf9eac05d078a95f9a36b668c6a_jonathan-daniels-cdvg9f96kyg-unsplash.jpg" />
-      <ImgContainer
-        small
-        imageURL="https://mateusz-skibicki-blog.cdn.prismic.io/mateusz-skibicki-blog/73af4079af847cf9eac05d078a95f9a36b668c6a_jonathan-daniels-cdvg9f96kyg-unsplash.jpg"
-      />
-      <ImgContainer
-        big
-        imageURL="https://mateusz-skibicki-blog.cdn.prismic.io/mateusz-skibicki-blog/73af4079af847cf9eac05d078a95f9a36b668c6a_jonathan-daniels-cdvg9f96kyg-unsplash.jpg"
-      />
-      <ImgFullWidth imageURL="https://mateusz-skibicki-blog.cdn.prismic.io/mateusz-skibicki-blog/73af4079af847cf9eac05d078a95f9a36b668c6a_jonathan-daniels-cdvg9f96kyg-unsplash.jpg" />
-      <ImgFullWidth
-        small
-        imageURL="https://mateusz-skibicki-blog.cdn.prismic.io/mateusz-skibicki-blog/73af4079af847cf9eac05d078a95f9a36b668c6a_jonathan-daniels-cdvg9f96kyg-unsplash.jpg"
-      />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "row",
+          flexWrap: "wrap"
+        }}
+      >
+        <ButtonIcon onPress={() => console.log(123333)} name={"md-contact"} />
+        <ButtonIcon name={"md-planet"} />
+        <ButtonIcon name={"md-jet"} />
+        <ButtonIcon name={"logo-facebook"} />
+        <ButtonIcon name={"md-contact"} />
+        <ButtonIcon name={"md-contact"} />
+        <ButtonIcon name={"md-contact"} />
+        <ButtonIcon name={"md-contact"} />
+        <ButtonIcon name={"md-contact"} />
+        <ButtonIcon name={"md-contact"} />
+        <ButtonIcon name={"md-contact"} />
+        <ButtonIcon name={"md-contact"} />
+      </View>
+
       <ImgFullWidth
         big
         imageURL="https://mateusz-skibicki-blog.cdn.prismic.io/mateusz-skibicki-blog/73af4079af847cf9eac05d078a95f9a36b668c6a_jonathan-daniels-cdvg9f96kyg-unsplash.jpg"
