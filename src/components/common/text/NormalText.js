@@ -4,11 +4,14 @@ import { Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
 const NormalText = props => {
+  //check if necessary exists
   if (
     !props.children ||
     !(typeof props.children === "string" || typeof props.children === "number")
   )
     return null;
+
+  //return component
   return (
     <Text
       {...props}

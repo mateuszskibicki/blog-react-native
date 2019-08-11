@@ -4,9 +4,14 @@ import { TouchableNativeFeedback, View, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import StylesMain from "../../../constants/StylesMain";
 
-const ButtonIcon = ({ onPress, style, right, center, block, small, name }) => {
+const ButtonIcon = ({ onPress, style, small, big, name }) => {
   //check if necessary exists
   if (!name || !(typeof name === "string")) return null;
+
+  //check size
+  let size = 30;
+  small && (size = 25);
+  big && (size = 35);
 
   //return component
   return (
@@ -15,17 +20,21 @@ const ButtonIcon = ({ onPress, style, right, center, block, small, name }) => {
         style={[
           styles.button,
           style,
-          right && { alignSelf: "flex-end" },
-          center && { alignSelf: "center" },
-          block && { alignSelf: null, alignItems: "center" },
           small && {
-            paddingVertical: 4,
-            paddingHorizontal: 8,
-            marginBottom: 16
+            width: 35,
+            height: 32
+          },
+          big && {
+            width: 55,
+            height: 50
           }
         ]}
       >
-        <Ionicons name={name} size={30} color={StylesMain.secondaryTextColor} />
+        <Ionicons
+          name={name}
+          size={size}
+          color={StylesMain.secondaryTextColor}
+        />
       </View>
     </TouchableNativeFeedback>
   );
@@ -43,7 +52,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: StylesMain.whiteSmoke,
-    marginBottom: 24,
+    marginBottom: 16,
     marginRight: 16,
     ...StylesMain.shadow
   },
@@ -58,12 +67,10 @@ const styles = StyleSheet.create({
 
 ButtonIcon.propTypes = {
   onPress: PropTypes.func,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   style: PropTypes.object,
-  right: PropTypes.bool,
-  center: PropTypes.bool,
-  block: PropTypes.bool,
-  small: PropTypes.bool
+  big: PropTypes.bool,
+  small: PropTypes.bool,
+  name: PropTypes.string.isRequired
 };
 
 export default ButtonIcon;

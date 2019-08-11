@@ -19,6 +19,8 @@ import {
 } from "../components/common/images";
 import CodeScrollSide from "../components/common/code-component/CodeScrollSide";
 
+import ListUL from "../components/common/lists/ListUL";
+
 export default function HomeScreen() {
   const [number, addNumber] = useState(1);
 
@@ -30,22 +32,27 @@ export default function HomeScreen() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "row",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
+          marginBottom: 32
         }}
       >
-        <ButtonIcon onPress={() => console.log(123333)} name={"md-contact"} />
-        <ButtonIcon name={"md-planet"} />
-        <ButtonIcon name={"md-jet"} />
-        <ButtonIcon name={"logo-facebook"} />
+        <ButtonIcon small name={"md-contact"} />
         <ButtonIcon name={"md-contact"} />
-        <ButtonIcon name={"md-contact"} />
-        <ButtonIcon name={"md-contact"} />
-        <ButtonIcon name={"md-contact"} />
-        <ButtonIcon name={"md-contact"} />
-        <ButtonIcon name={"md-contact"} />
-        <ButtonIcon name={"md-contact"} />
-        <ButtonIcon name={"md-contact"} />
+        <ButtonIcon big name={"md-contact"} />
+        <ButtonIcon big name={"md-contact"} />
       </View>
+
+      <ListUL
+        title="Daaamn title"
+        list={[
+          "Lorem asd asd sdsdasda asd",
+          "Lorem asd asd sdsdasda asd",
+          "Lorem asd asd sdsdasda asd",
+          "Lorem asd asd sdsdasda asd",
+          "Lorem asd asd sdsdasda asd",
+          "JavaScript lorem10 lorem10 lorem10 lorem10 lorem10"
+        ]}
+      />
 
       <ImgFullWidth
         big
