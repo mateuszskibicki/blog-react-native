@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import ArticlesHorizontalList from "../articles/ArticlesHorizontalList";
 
 const HomeScreenContainer = ({ articles } = {}) => {
-  console.log(articles);
   if (!articles) return null;
   return (
     <ArticlesHorizontalList title={"Last 3 articles:"} articles={articles} />

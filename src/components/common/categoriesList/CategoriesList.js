@@ -3,24 +3,28 @@ import PropTypes from "prop-types";
 import { View, Text, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 
-const TagsList = props => {
-  if (!props.tags || typeof props.tags !== "string" || props.tags.length === 0)
+const CategoriesList = props => {
+  if (
+    !props.categories ||
+    typeof props.categories !== "string" ||
+    props.categories.length === 0
+  )
     return null;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tags:</Text>
-      {props.tags.split(";").map(tag => (
-        <View style={styles.tagWrapper} key={tag}>
+      <Text style={styles.title}>Categories:</Text>
+      {props.categories.split(";").map(category => (
+        <View style={styles.categoriesWrapper} key={category}>
           <Text
             style={[
-              styles.tag,
+              styles.category,
               props.style,
               props.secondary && { color: StylesMain.secondaryTextColor },
               props.bold && { fontWeight: StylesMain.textBoldWeight }
             ]}
           >
-            {tag}
+            {category}
           </Text>
         </View>
       ))}
@@ -45,7 +49,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     color: StylesMain.textColor
   },
-  tagWrapper: {
+  categoriesWrapper: {
     marginBottom: 5,
     marginRight: 4,
     paddingHorizontal: 3,
@@ -56,19 +60,19 @@ const styles = StyleSheet.create({
     backgroundColor: StylesMain.backgroundColor,
     ...StylesMain.smallShadow
   },
-  tag: {
+  category: {
     fontSize: 13,
     fontFamily: StylesMain.fontFamily,
     margin: 0
   }
 });
 
-TagsList.propTypes = {
+CategoriesList.propTypes = {
   style: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   secondary: PropTypes.bool,
   bold: PropTypes.bool,
-  tags: PropTypes.string.isRequired
+  categories: PropTypes.string.isRequired
 };
 
-export default TagsList;
+export default CategoriesList;

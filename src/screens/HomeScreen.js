@@ -8,7 +8,9 @@ import HomeScreenContainer from "../components/screen-container/HomeScreenContai
 const HomeScreen = ({ articles, getAllArticles }) => {
   // grab last 3 articles
   useEffect(() => {
-    getAllArticles({ lastThree: true });
+    if (!articles.lastThree) {
+      getAllArticles({ lastThree: true });
+    }
   }, []);
 
   //display component

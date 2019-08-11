@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { View, ScrollView, StyleSheet } from "react-native";
 import { MediumText } from "../common/text";
-import ArticlesListSingle from "./ArticlesListSingle";
-
-import StylesMain from "../../constants/StylesMain";
+import ArticlesListSingleHorizontal from "./ArticlesListSingleHorizontal";
 
 const ArticlesHorizontalList = ({ articles, title }) => {
   if (!articles || !Array.isArray(articles) || articles.length === 0)
@@ -19,7 +17,7 @@ const ArticlesHorizontalList = ({ articles, title }) => {
       )}
       <ScrollView horizontal={true}>
         {articles.map(article => (
-          <ArticlesListSingle article={article} key={article.uid} />
+          <ArticlesListSingleHorizontal article={article} key={article.uid} />
         ))}
       </ScrollView>
     </View>

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: StylesMain.primaryGreen,
     borderRadius: 5,
     shadowColor: "#000",
-    marginBottom: 24,
+    marginBottom: 16,
     ...StylesMain.shadow
   },
   text: {

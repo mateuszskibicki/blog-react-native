@@ -15,8 +15,6 @@ const ImgContainer = ({
   //check if necessary exists
   if (!imageURL || typeof imageURL !== "string") return null;
 
-  console.log(noShadow);
-
   //return component
   return (
     <View

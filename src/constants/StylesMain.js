@@ -7,6 +7,16 @@ export default {
   fontFamily: "titillium-web",
   backgroundColor: "#fafafa",
   primaryGreen: "#00986f",
+  smallShadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 3.5,
+    elevation: 5
+  },
   shadow: {
     shadowColor: "#000",
     shadowOffset: {
