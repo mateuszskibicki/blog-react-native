@@ -9,6 +9,7 @@ export const articlesListHelper = data => {
   const articlesData = data.results;
 
   const articles = articlesData.map(article => ({
+    key: article.uid,
     uid: article.uid,
     title: TextHelper(article.data.title),
     short_description: TextHelper(article.data.short_description),

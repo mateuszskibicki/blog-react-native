@@ -200,7 +200,10 @@ export const getAllArticlesByCategoryPrismicQuery = async ({
   return await prismicConnection.query(
     [
       Prismic.Predicates.at("document.type", "single-article-mobile"),
-      Prismic.Predicates.fulltext("my.single-article.categories", category)
+      Prismic.Predicates.fulltext(
+        "my.single-article-mobile.categories",
+        category
+      )
     ],
     {
       page,
@@ -247,7 +250,10 @@ export const getAllArticlesByCategoryAndSearchTextPrismicQuery = async ({
   return await prismicConnection.query(
     [
       Prismic.Predicates.at("document.type", "single-article-mobile"),
-      Prismic.Predicates.fulltext("my.single-article.categories", category),
+      Prismic.Predicates.fulltext(
+        "my.single-article-mobile.categories",
+        category
+      ),
       Prismic.Predicates.fulltext("document", searchText)
     ],
     {

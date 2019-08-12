@@ -3,18 +3,19 @@ import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
 import { ImgContainer } from "../common/images";
 import { NormalText, SmallText } from "../common/text";
+import TagsList from "../common/tagsList/TagsList";
 import CategoriesList from "../common/categoriesList/CategoriesList";
 import { ButtonPrimary } from "../common/buttons";
 
 //constants
 import StylesMain from "../../constants/StylesMain";
-import Layout from "../../constants/Layout";
 
-const ArticlesListSingleHorizontal = ({
+const ArticlesListSingleVerical = ({
   article: {
     uid,
     title,
     categories,
+    tags,
     short_description,
     date,
     small_img,
@@ -27,7 +28,7 @@ const ArticlesListSingleHorizontal = ({
     <View style={styles.container}>
       {/* Small img on top */}
       <ImgContainer
-        small
+        medium
         noShadow
         imageURL={small_img.url}
         styleContainer={{ marginBottom: 8 }}
@@ -44,11 +45,12 @@ const ArticlesListSingleHorizontal = ({
             {date}
           </SmallText>
         </View>
-        {/* Title, description, categories, button to go */}
+        {/* Title, description, categories, tags, button to go */}
         <NormalText bold style={{ marginBottom: 8 }}>
           {title}
         </NormalText>
         <SmallText style={{ marginBottom: 8 }}>{short_description}</SmallText>
+        <TagsList tags={tags} />
         <CategoriesList categories={categories} />
         <ButtonPrimary right>Read more...</ButtonPrimary>
       </View>
@@ -58,19 +60,19 @@ const ArticlesListSingleHorizontal = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: Layout.window.width * 0.8,
-    alignSelf: "flex-start",
+    width: "auto",
+    //alignSelf: "center",
     borderRadius: 5,
-    marginRight: 16,
     marginBottom: 16,
-    marginLeft: 8,
+    marginHorizontal: 16,
     backgroundColor: StylesMain.backgroundColor,
     ...StylesMain.shadow
   },
   contentWrapper: {
     paddingLeft: 16,
     paddingRight: 16,
-    backgroundColor: StylesMain.backgroundColor
+    backgroundColor: StylesMain.backgroundColor,
+    borderRadius: 5
   },
   authorDateWrapper: {
     flex: 1,
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
   }
 });
 
-ArticlesListSingleHorizontal.propTypes = {
+ArticlesListSingleVerical.propTypes = {
   article: PropTypes.shape({
     uid: PropTypes.string,
     title: PropTypes.string,
@@ -109,4 +111,4 @@ ArticlesListSingleHorizontal.propTypes = {
   })
 };
 
-export default React.memo(ArticlesListSingleHorizontal);
+export default React.memo(ArticlesListSingleVerical);

@@ -9,6 +9,7 @@ const ImgContainer = ({
   imageStyle,
   imageURL,
   small,
+  medium,
   big,
   noShadow,
   mb0
@@ -42,6 +43,9 @@ const ImgContainer = ({
           small && {
             height: 160
           },
+          medium && {
+            height: 220
+          },
           big && {
             height: 500
           }
@@ -73,6 +77,7 @@ ImgContainer.propTypes = {
   imageStyle: PropTypes.object,
   imageURL: PropTypes.string,
   small: PropTypes.bool,
+  medium: PropTypes.bool,
   big: PropTypes.bool,
   noShadow: PropTypes.bool,
   mb0: PropTypes.bool

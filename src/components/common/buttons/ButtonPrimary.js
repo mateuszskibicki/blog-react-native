@@ -8,6 +8,7 @@ const ButtonPrimary = ({
   children,
   style,
   right,
+  noContainer,
   center,
   block,
   small,
@@ -28,6 +29,7 @@ const ButtonPrimary = ({
           styles.button,
           style,
           right && { alignSelf: "flex-end" },
+          noContainer && { alignSelf: null, flex: 0 },
           center && { alignSelf: "center" },
           block && { alignSelf: null, alignItems: "center" },
           small && {
@@ -75,6 +77,7 @@ ButtonPrimary.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   style: PropTypes.object,
   right: PropTypes.bool,
+  noContainer: PropTypes.bool,
   center: PropTypes.bool,
   block: PropTypes.bool,
   small: PropTypes.bool,
