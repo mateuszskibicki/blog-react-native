@@ -9,15 +9,17 @@ import SubscribeMailchimp from "../../subscribe-mailchimp/SubscribeMailchimp";
 const ContainerScroll = props => {
   return (
     <View style={styles.container}>
-      {props.loading ? (
+      {props.loading.loading ? (
         <Spinner />
       ) : (
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
           ref={ref => (this.scrollView = ref)}
+          // scroll when error on subscription
           onContentSizeChange={(contentWidth, contentHeight) => {
-            this.scrollView.scrollToEnd({ animated: true });
+            props.mailchimp.error &&
+              this.scrollView.scrollToEnd({ animated: true });
           }}
         >
           {props.children}
@@ -35,17 +37,23 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 48,
-    //paddingBottom: 24,
     paddingLeft: 16,
     paddingRight: 16,
     backgroundColor: StylesMain.backgroundColor
   }
 });
 
-const mapStateToProps = ({ loading }) => loading;
+const mapStateToProps = ({ loading, mailchimp }) => {
+  return { loading, mailchimp };
+};
 
 ContainerScroll.propTypes = {
-  loading: PropTypes.bool,
+  loading: PropTypes.object,
+  mailchimp: PropTypes.shape({
+    error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+    loading: PropTypes.bool,
+    success: PropTypes.bool
+  }),
   children: PropTypes.any
 };
 

@@ -28,7 +28,9 @@ const SubscribeMailchimp = ({ mailchimp, subscribeToMailchimp }) => {
   if (success)
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Thank you for your subscription!</Text>
+        <Text style={[styles.title, { marginBottom: 0 }]}>
+          Thank you for your subscription!
+        </Text>
       </View>
     );
 
@@ -74,7 +76,8 @@ const styles = StyleSheet.create({
     marginHorizontal: -16,
     marginTop: 32,
     padding: 32,
-    backgroundColor: StylesMain.primaryGreen
+    backgroundColor: StylesMain.primaryGreen,
+    ...StylesMain.shadow
   },
   title: {
     marginBottom: 16,
