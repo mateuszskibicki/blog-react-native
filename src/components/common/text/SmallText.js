@@ -29,7 +29,7 @@ const SmallText = props => {
 
 const styles = StyleSheet.create({
   text: {
-    marginBottom: 24,
+    marginBottom: 16,
     color: StylesMain.textColor,
     fontSize: 16,
     fontFamily: StylesMain.fontFamily

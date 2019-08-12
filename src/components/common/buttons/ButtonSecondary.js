@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: StylesMain.secondaryTextColor,
-    marginBottom: 24,
+    marginBottom: 16,
     ...StylesMain.shadow
   },
   text: {

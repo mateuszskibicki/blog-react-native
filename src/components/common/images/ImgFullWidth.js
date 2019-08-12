@@ -40,7 +40,7 @@ const ImgFullWidth = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 0,
-    marginBottom: 24,
+    marginBottom: 16,
     marginLeft: -16,
     marginRight: -16,
     ...StylesMain.shadow

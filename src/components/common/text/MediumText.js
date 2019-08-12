@@ -29,9 +29,9 @@ const MediumText = props => {
 
 const styles = StyleSheet.create({
   text: {
-    marginBottom: 24,
+    marginBottom: 16,
     color: StylesMain.textColor,
-    fontSize: 32,
+    fontSize: 28,
     fontFamily: StylesMain.fontFamily
   }
 });

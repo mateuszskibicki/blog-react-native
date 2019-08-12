@@ -29,7 +29,7 @@ const NormalText = props => {
 
 const styles = StyleSheet.create({
   text: {
-    marginBottom: 24,
+    marginBottom: 16,
     color: StylesMain.textColor,
     fontSize: 20,
     fontFamily: StylesMain.fontFamily

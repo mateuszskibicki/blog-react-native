@@ -53,7 +53,7 @@ const ImgContainer = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 5,
-    marginBottom: 24,
+    marginBottom: 16,
     ...StylesMain.shadow
   },
   imageWrapper: {

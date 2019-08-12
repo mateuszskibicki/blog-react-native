@@ -29,9 +29,9 @@ const BigText = props => {
 
 const styles = StyleSheet.create({
   text: {
-    marginBottom: 24,
+    marginBottom: 16,
     color: StylesMain.textColor,
-    fontSize: 44,
+    fontSize: 36,
     fontFamily: StylesMain.fontFamily
   }
 });
