@@ -25,7 +25,6 @@ const App = props => {
       ) : (
         // proper app
         <View style={styles.container}>
-          <StatusBar hidden={true} />
           <AppNavigator />
         </View>
       )}

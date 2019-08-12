@@ -9,7 +9,8 @@ const ImgFullWidth = ({
   imageStyle,
   imageURL,
   small,
-  big
+  big,
+  mb0
 }) => {
   //check if necessary exists
   if (!imageURL || typeof imageURL !== "string") return null;
@@ -29,7 +30,8 @@ const ImgFullWidth = ({
           },
           big && {
             height: 500
-          }
+          },
+          mb0 && { marginBottom: 0 }
         ]}
         imageStyle={[imageStyle]}
       />
@@ -57,7 +59,8 @@ ImgFullWidth.propTypes = {
   imageStyle: PropTypes.object,
   imageURL: PropTypes.string,
   small: PropTypes.bool,
-  big: PropTypes.bool
+  big: PropTypes.bool,
+  mb0: PropTypes.bool
 };
 
 export default React.memo(ImgFullWidth);

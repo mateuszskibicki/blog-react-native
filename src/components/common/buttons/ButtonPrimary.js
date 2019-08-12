@@ -10,7 +10,8 @@ const ButtonPrimary = ({
   right,
   center,
   block,
-  small
+  small,
+  mb0
 }) => {
   //check if necessary exists
   if (
@@ -33,7 +34,8 @@ const ButtonPrimary = ({
             paddingVertical: 4,
             paddingHorizontal: 8,
             marginBottom: 16
-          }
+          },
+          mb0 && { marginBottom: 0 }
         ]}
       >
         <Text
@@ -75,7 +77,8 @@ ButtonPrimary.propTypes = {
   right: PropTypes.bool,
   center: PropTypes.bool,
   block: PropTypes.bool,
-  small: PropTypes.bool
+  small: PropTypes.bool,
+  mb0: PropTypes.bool
 };
 
 export default React.memo(ButtonPrimary);

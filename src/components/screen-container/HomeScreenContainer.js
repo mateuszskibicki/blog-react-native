@@ -1,11 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ArticlesHorizontalList from "../articles/ArticlesHorizontalList";
+import HomepageHeader from "../homepage/HomepageHeader";
 
 const HomeScreenContainer = ({ articles } = {}) => {
   if (!articles) return null;
   return (
-    <ArticlesHorizontalList title={"Last 3 articles:"} articles={articles} />
+    <>
+      <HomepageHeader />
+      <ArticlesHorizontalList title={"Last 3 articles:"} articles={articles} />
+    </>
   );
 };
 

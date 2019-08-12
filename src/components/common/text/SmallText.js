@@ -21,7 +21,8 @@ const SmallText = props => {
         props.secondary && { color: StylesMain.secondaryTextColor },
         props.bold && { fontWeight: StylesMain.textBoldWeight },
         props.center && { textAlign: "center" },
-        props.right && { textAlign: "right" }
+        props.right && { textAlign: "right" },
+        props.mb0 && { marginBottom: 0 }
       ]}
     />
   );
@@ -42,7 +43,8 @@ SmallText.propTypes = {
   secondary: PropTypes.bool,
   bold: PropTypes.bool,
   center: PropTypes.bool,
-  right: PropTypes.bool
+  right: PropTypes.bool,
+  mb0: PropTypes.bool
 };
 
 export default React.memo(SmallText);

@@ -39,10 +39,10 @@ const ArticlesListSingleHorizontal = ({
       <View style={styles.contentWrapper}>
         {/* Author and date on top */}
         <View style={styles.authorDateWrapper}>
-          <SmallText bold secondary right style={{ marginBottom: 0 }}>
+          <SmallText bold secondary right mb0>
             {author.full_name}
           </SmallText>
-          <SmallText bold secondary right style={{ marginBottom: 0 }}>
+          <SmallText bold secondary right mb0>
             {date}
           </SmallText>
         </View>

@@ -11,7 +11,8 @@ const ImgRounded = ({
   left,
   right,
   small,
-  big
+  big,
+  mb0
 }) => {
   //check if necessary exists
   if (!imageURL || typeof imageURL !== "string") return null;
@@ -21,9 +22,11 @@ const ImgRounded = ({
     <View
       style={[
         styles.container,
+        styleContainer,
         left && { alignItems: "flex-start" },
         right && { alignItems: "flex-end" },
-        styleContainer
+
+        mb0 && { marginBottom: 0 }
       ]}
     >
       <ImageBackground
@@ -69,7 +72,8 @@ ImgRounded.propTypes = {
   small: PropTypes.bool,
   big: PropTypes.bool,
   left: PropTypes.bool,
-  right: PropTypes.bool
+  right: PropTypes.bool,
+  mb0: PropTypes.bool
 };
 
 export default React.memo(ImgRounded);

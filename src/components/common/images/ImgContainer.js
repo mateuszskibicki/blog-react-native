@@ -10,7 +10,8 @@ const ImgContainer = ({
   imageURL,
   small,
   big,
-  noShadow
+  noShadow,
+  mb0
 }) => {
   //check if necessary exists
   if (!imageURL || typeof imageURL !== "string") return null;
@@ -27,7 +28,8 @@ const ImgContainer = ({
           shadowOpacity: null,
           shadowRadius: null,
           elevation: null
-        }
+        },
+        mb0 && { marginBottom: 0 }
       ]}
     >
       <ImageBackground
@@ -72,7 +74,8 @@ ImgContainer.propTypes = {
   imageURL: PropTypes.string,
   small: PropTypes.bool,
   big: PropTypes.bool,
-  noShadow: PropTypes.bool
+  noShadow: PropTypes.bool,
+  mb0: PropTypes.bool
 };
 
 export default React.memo(ImgContainer);

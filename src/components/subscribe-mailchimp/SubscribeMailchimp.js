@@ -46,14 +46,16 @@ const SubscribeMailchimp = ({ mailchimp, subscribeToMailchimp }) => {
         {loading ? (
           <ButtonSecondary
             center
-            style={{ marginBottom: 0, borderColor: StylesMain.whiteSmoke }}
+            style={{ borderColor: StylesMain.whiteSmoke }}
+            mb0
           >
             Please wait...
           </ButtonSecondary>
         ) : (
           <ButtonSecondary
             center
-            style={{ marginBottom: 0, borderColor: StylesMain.whiteSmoke }}
+            style={{ borderColor: StylesMain.whiteSmoke }}
+            mb0
             onPress={onSubscribe}
           >
             Subscribe
