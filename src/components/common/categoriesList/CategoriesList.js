@@ -75,4 +75,4 @@ CategoriesList.propTypes = {
   categories: PropTypes.string.isRequired
 };
 
-export default CategoriesList;
+export default React.memo(CategoriesList);

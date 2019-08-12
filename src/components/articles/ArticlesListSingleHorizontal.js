@@ -114,4 +114,4 @@ ArticlesListSingleHorizontal.propTypes = {
   })
 };
 
-export default ArticlesListSingleHorizontal;
+export default React.memo(ArticlesListSingleHorizontal);

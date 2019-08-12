@@ -71,4 +71,4 @@ TagsList.propTypes = {
   tags: PropTypes.string.isRequired
 };
 
-export default TagsList;
+export default React.memo(TagsList);

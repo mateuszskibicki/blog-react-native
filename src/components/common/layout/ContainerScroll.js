@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { View, ScrollView, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 import Spinner from "./Spinner";
+import SubscribeMailchimp from "../../subscribe-mailchimp/SubscribeMailchimp";
 
 const ContainerScroll = props => {
   return (
@@ -14,8 +15,13 @@ const ContainerScroll = props => {
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
+          ref={ref => (this.scrollView = ref)}
+          onContentSizeChange={(contentWidth, contentHeight) => {
+            this.scrollView.scrollToEnd({ animated: true });
+          }}
         >
           {props.children}
+          <SubscribeMailchimp />
         </ScrollView>
       )}
     </View>
@@ -29,7 +35,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 48,
-    paddingBottom: 24,
+    //paddingBottom: 24,
     paddingLeft: 16,
     paddingRight: 16,
     backgroundColor: StylesMain.backgroundColor

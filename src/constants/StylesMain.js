@@ -7,6 +7,7 @@ export default {
   fontFamily: "titillium-web",
   backgroundColor: "#fafafa",
   primaryGreen: "#00986f",
+  tomatoColor: "#ff6347",
   smallShadow: {
     shadowColor: "#000",
     shadowOffset: {

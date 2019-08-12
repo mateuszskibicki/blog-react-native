@@ -61,4 +61,4 @@ ArticlesHorizontalList.propTypes = {
   )
 };
 
-export default ArticlesHorizontalList;
+export default React.memo(ArticlesHorizontalList);

@@ -40,4 +40,4 @@ HomeScreenContainer.propTypes = {
   )
 };
 
-export default HomeScreenContainer;
+export default React.memo(HomeScreenContainer);
