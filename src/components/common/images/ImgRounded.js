@@ -25,7 +25,6 @@ const ImgRounded = ({
         styleContainer,
         left && { alignItems: "flex-start" },
         right && { alignItems: "flex-end" },
-
         mb0 && { marginBottom: 0 }
       ]}
     >
