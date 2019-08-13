@@ -8,6 +8,7 @@ import {
 import TabBarIcon from "./TabBarIcon";
 import HomeScreen from "../../screens/HomeScreen";
 import ArticlesScreen from "../../screens/ArticlesScreen";
+import SearchScreen from "../../screens/SearchScreen";
 import AboutScreen from "../../screens/AboutScreen";
 
 import StylesMain from "../../constants/StylesMain";
@@ -16,6 +17,12 @@ const config = Platform.select({
   web: { headerMode: "screen" },
   default: {}
 });
+
+/**
+|--------------------------------------------------
+| Home stack
+|--------------------------------------------------
+*/
 
 const HomeStack = createStackNavigator(
   {
@@ -30,6 +37,12 @@ HomeStack.navigationOptions = {
 };
 
 HomeStack.path = "";
+
+/**
+|--------------------------------------------------
+| Articles stack
+|--------------------------------------------------
+*/
 
 const ArticlesStack = createStackNavigator(
   {
@@ -47,6 +60,34 @@ ArticlesStack.navigationOptions = {
 
 ArticlesStack.path = "";
 
+/**
+|--------------------------------------------------
+| Search stack
+|--------------------------------------------------
+*/
+
+const SearchStack = createStackNavigator(
+  {
+    Search: SearchScreen
+  },
+  config
+);
+
+SearchStack.navigationOptions = {
+  tabBarLabel: "Search",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={"md-search"} />
+  )
+};
+
+SearchStack.path = "";
+
+/**
+|--------------------------------------------------
+| About stack
+|--------------------------------------------------
+*/
+
 const AboutStack = createStackNavigator(
   {
     About: AboutScreen
@@ -63,10 +104,17 @@ AboutStack.navigationOptions = {
 
 AboutStack.path = "";
 
+/**
+|--------------------------------------------------
+| Tab navigator options
+|--------------------------------------------------
+*/
+
 const tabNavigator = createBottomTabNavigator(
   {
     HomeStack,
     ArticlesStack,
+    SearchStack,
     AboutStack
   },
   {
@@ -77,10 +125,13 @@ const tabNavigator = createBottomTabNavigator(
         borderTopWidth: 2
       },
       labelStyle: {
-        fontWeight: StylesMain.fontWeight
+        fontFamily: StylesMain.fontFamily,
+        fontSize: 13
       },
-      activeTintColor: StylesMain.primaryGreen
-    }
+      activeTintColor: StylesMain.primaryGreen,
+      inactiveTintColor: StylesMain.secondaryTextColor
+    },
+    initialRouteName: "SearchStack"
   }
 );
 

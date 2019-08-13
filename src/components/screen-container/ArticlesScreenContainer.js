@@ -16,8 +16,12 @@ const ArticlesScreenContainer = ({
 
   return (
     <>
-      <CategoriesButtons category={category} />
-      <ArticlesFlatList articles={articles} totalPages={totalPages} />
+      <CategoriesButtons category={category} searchText={searchText} />
+      <ArticlesFlatList
+        articles={articles}
+        totalPages={totalPages}
+        error={error}
+      />
       <ArticlesPagination
         category={category}
         searchText={searchText}

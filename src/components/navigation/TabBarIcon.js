@@ -9,15 +9,15 @@ const TabBarIcon = React.memo(({ name, focused }) => {
   return (
     <Ionicons
       name={name}
-      size={26}
+      size={focused ? 30 : 26}
       style={{ marginBottom: -5 }}
-      color={focused ? StylesMain.primaryGreen : StylesMain.textColor}
+      color={focused ? StylesMain.primaryGreen : StylesMain.secondaryTextColor}
     />
   );
 });
 
 TabBarIcon.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   focused: PropTypes.bool
 };
 

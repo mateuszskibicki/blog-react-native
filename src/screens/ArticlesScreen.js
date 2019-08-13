@@ -5,7 +5,7 @@ import { getAllArticles } from "../store/actions/articles/articlesActions";
 import ContainerScroll from "../components/common/layout/ContainerScroll";
 import ArticlesScreenContainer from "../components/screen-container/ArticlesScreenContainer";
 
-const ArticlesScreen = ({ articles, getAllArticles, navigation }) => {
+const ArticlesScreen = ({ articles, getAllArticles, navigation, loading }) => {
   const {
     category,
     currentPage,
@@ -21,12 +21,15 @@ const ArticlesScreen = ({ articles, getAllArticles, navigation }) => {
 
   // grab all articles
   useEffect(() => {
-    getAllArticles({
-      category: categoryParam,
-      searchText: searchTextParam,
-      page: pageParam
-    });
+    !loading.loading &&
+      getAllArticles({
+        category: categoryParam,
+        searchText: searchTextParam,
+        page: pageParam
+      });
   }, []);
+
+  if (!articles[currentPage]) return null;
 
   //display component
   return (
@@ -62,8 +65,8 @@ ArticlesScreen.propTypes = {
 };
 
 //Redux logic
-const mapStateToProps = ({ articles }) => {
-  return { articles };
+const mapStateToProps = ({ articles, loading }) => {
+  return { articles, loading };
 };
 
 const mapDispatchToProps = {

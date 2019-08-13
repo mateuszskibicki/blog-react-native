@@ -5,8 +5,8 @@ import { FlatList, StyleSheet } from "react-native";
 import { MediumText } from "../common/text";
 import ArticlesListSingleVertical from "./ArticlesListSingleVertical";
 
-const ArticlesFlatList = ({ articles, totalPages }) => {
-  if (Number(totalPages) === 0)
+const ArticlesFlatList = ({ articles, totalPages, error }) => {
+  if (Number(totalPages) === 0 || error)
     return (
       <MediumText secondary center>
         404 - no articles found, please try again
@@ -63,7 +63,8 @@ ArticlesFlatList.propTypes = {
       })
     })
   ),
-  totalPages: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  totalPages: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  error: PropTypes.any
 };
 
 export default React.memo(ArticlesFlatList);

@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
 import { withNavigation } from "react-navigation";
-import { ButtonPrimary, ButtonSecondary } from "../common/buttons";
-import { MediumText } from "../common/text";
+import { ButtonPrimary, ButtonSecondary, ButtonIcon } from "../common/buttons";
+import { MediumText, NormalText } from "../common/text";
 
-const CategoriesButtons = ({ navigation, category }) => {
+const CategoriesButtons = ({ navigation, category, searchText }) => {
   return (
     <View style={styles.buttonsContainer}>
       <MediumText bold style={{ width: "100%" }}>
@@ -16,7 +16,7 @@ const CategoriesButtons = ({ navigation, category }) => {
           mb0
           small
           noContainer
-          onPress={() => navigation.push("Articles")}
+          onPress={() => navigation.push("Articles", { searchText })}
         >
           All
         </ButtonPrimary>
@@ -25,7 +25,7 @@ const CategoriesButtons = ({ navigation, category }) => {
           mb0
           small
           noContainer
-          onPress={() => navigation.push("Articles")}
+          onPress={() => navigation.push("Articles", { searchText })}
         >
           All
         </ButtonSecondary>
@@ -36,7 +36,7 @@ const CategoriesButtons = ({ navigation, category }) => {
           small
           noContainer
           onPress={() =>
-            navigation.push("Articles", { category: "Full-Stack" })
+            navigation.push("Articles", { searchText, category: "Full-Stack" })
           }
         >
           Full-Stack
@@ -47,7 +47,7 @@ const CategoriesButtons = ({ navigation, category }) => {
           small
           noContainer
           onPress={() =>
-            navigation.push("Articles", { category: "Full-Stack" })
+            navigation.push("Articles", { searchText, category: "Full-Stack" })
           }
         >
           Full-Stack
@@ -58,7 +58,9 @@ const CategoriesButtons = ({ navigation, category }) => {
           mb0
           small
           noContainer
-          onPress={() => navigation.push("Articles", { category: "Front-End" })}
+          onPress={() =>
+            navigation.push("Articles", { searchText, category: "Front-End" })
+          }
         >
           Front-End
         </ButtonPrimary>
@@ -67,7 +69,9 @@ const CategoriesButtons = ({ navigation, category }) => {
           mb0
           small
           noContainer
-          onPress={() => navigation.push("Articles", { category: "Front-End" })}
+          onPress={() =>
+            navigation.push("Articles", { searchText, category: "Front-End" })
+          }
         >
           Front-End
         </ButtonSecondary>
@@ -77,7 +81,9 @@ const CategoriesButtons = ({ navigation, category }) => {
           mb0
           small
           noContainer
-          onPress={() => navigation.push("Articles", { category: "Back-End" })}
+          onPress={() =>
+            navigation.push("Articles", { searchText, category: "Back-End" })
+          }
         >
           Back-End
         </ButtonPrimary>
@@ -86,7 +92,9 @@ const CategoriesButtons = ({ navigation, category }) => {
           mb0
           small
           noContainer
-          onPress={() => navigation.push("Articles", { category: "Back-End" })}
+          onPress={() =>
+            navigation.push("Articles", { searchText, category: "Back-End" })
+          }
         >
           Back-End
         </ButtonSecondary>
@@ -96,7 +104,9 @@ const CategoriesButtons = ({ navigation, category }) => {
           mb0
           small
           noContainer
-          onPress={() => navigation.push("Articles", { category: "Other" })}
+          onPress={() =>
+            navigation.push("Articles", { searchText, category: "Other" })
+          }
         >
           Other
         </ButtonPrimary>
@@ -105,10 +115,26 @@ const CategoriesButtons = ({ navigation, category }) => {
           mb0
           small
           noContainer
-          onPress={() => navigation.push("Articles", { category: "Other" })}
+          onPress={() =>
+            navigation.push("Articles", { searchText, category: "Other" })
+          }
         >
           Other
         </ButtonSecondary>
+      )}
+      {searchText && (
+        <View style={styles.containerSearchText}>
+          <NormalText mb0 secondary bold>
+            Results for: {searchText}
+          </NormalText>
+          <ButtonIcon
+            mb0
+            small
+            name="md-close"
+            style={{ marginRight: 0 }}
+            onPress={() => navigation.push("Articles")}
+          />
+        </View>
       )}
     </View>
   );
@@ -122,11 +148,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexWrap: "wrap",
     marginBottom: 32
+  },
+  containerSearchText: {
+    width: "100%",
+    marginTop: 32,
+    flex: 0,
+    justifyContent: "space-between",
+    flexDirection: "row"
   }
 });
 
 CategoriesButtons.propTypes = {
   category: PropTypes.string,
+  searchText: PropTypes.string,
   navigation: PropTypes.object
 };
 

@@ -19,8 +19,6 @@ const styles = StyleSheet.create({
     padding: 8,
     backgroundColor: StylesMain.tomatoColor,
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: StylesMain.secondaryTextColor,
     ...StylesMain.shadow
   },
   errorText: {

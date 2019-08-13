@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     color: StylesMain.secondaryTextColor,
     fontWeight: StylesMain.textBoldWeight,
     fontFamily: StylesMain.fontFamily,
+    textAlign: "center",
     fontSize: 18,
     padding: 0
   }
