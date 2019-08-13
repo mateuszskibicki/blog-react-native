@@ -173,6 +173,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     flexWrap: "wrap",
+    marginTop: 16,
     marginBottom: 32
   },
   containerSearchText: {

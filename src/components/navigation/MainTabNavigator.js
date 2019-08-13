@@ -10,12 +10,28 @@ import HomeScreen from "../../screens/HomeScreen";
 import ArticlesScreen from "../../screens/ArticlesScreen";
 import SearchScreen from "../../screens/SearchScreen";
 import AboutScreen from "../../screens/AboutScreen";
+import SingleArticleScreen from "../../screens/SingleArticleScreen";
 
+//styles
 import StylesMain from "../../constants/StylesMain";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
-  default: {}
+  default: {
+    //default option for header (article single page)
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: StylesMain.primaryGreen,
+        ...StylesMain.shadow
+      },
+      headerTintColor: StylesMain.whiteTextColor,
+      headerTitleStyle: {
+        fontSize: 16,
+        fontWeight: StylesMain.textBoldWeight,
+        fontFamily: StylesMain.fontFamily
+      }
+    }
+  }
 });
 
 /**
@@ -26,7 +42,8 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen
+    Home: HomeScreen,
+    Article: SingleArticleScreen
   },
   config
 );
@@ -46,7 +63,8 @@ HomeStack.path = "";
 
 const ArticlesStack = createStackNavigator(
   {
-    Articles: ArticlesScreen
+    Articles: ArticlesScreen,
+    Article: SingleArticleScreen
   },
   config
 );
@@ -131,7 +149,7 @@ const tabNavigator = createBottomTabNavigator(
       activeTintColor: StylesMain.primaryGreen,
       inactiveTintColor: StylesMain.secondaryTextColor
     },
-    initialRouteName: "SearchStack"
+    initialRouteName: "HomeStack"
   }
 );
 

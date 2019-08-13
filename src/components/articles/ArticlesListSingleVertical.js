@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
+import { withNavigation } from "react-navigation";
 import { ImgContainer } from "../common/images";
 import { NormalText, SmallText } from "../common/text";
 import TagsList from "../common/tagsList/TagsList";
@@ -20,9 +21,12 @@ const ArticlesListSingleVerical = ({
     date,
     small_img,
     author
-  }
+  },
+  navigation
 }) => {
   if (!uid || typeof uid !== "string") return null;
+
+  const goToArticle = () => navigation.navigate("Article", { uid, title });
 
   return (
     <View style={styles.container}>
@@ -52,7 +56,9 @@ const ArticlesListSingleVerical = ({
         <SmallText style={{ marginBottom: 8 }}>{short_description}</SmallText>
         <TagsList tags={tags} />
         <CategoriesList categories={categories} />
-        <ButtonPrimary right>Read more...</ButtonPrimary>
+        <ButtonPrimary right onPress={goToArticle}>
+          Read more...
+        </ButtonPrimary>
       </View>
     </View>
   );
@@ -110,4 +116,4 @@ ArticlesListSingleVerical.propTypes = {
   })
 };
 
-export default React.memo(ArticlesListSingleVerical);
+export default React.memo(withNavigation(ArticlesListSingleVerical));

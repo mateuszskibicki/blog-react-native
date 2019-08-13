@@ -1,6 +1,5 @@
 import React from "react";
 import { Asset } from "expo-asset";
-// import PropTypes from "prop-types";
 import { StyleSheet, View } from "react-native";
 import { ImgRounded } from "../common/images";
 import { NormalText } from "../common/text";
@@ -27,10 +26,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 32
+    marginVertical: 32
   }
 });
-
-//HomepageHeader.propTypes = {};
 
 export default React.memo(HomepageHeader);

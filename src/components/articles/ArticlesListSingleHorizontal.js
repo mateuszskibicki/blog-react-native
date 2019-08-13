@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
+import { withNavigation } from "react-navigation";
 import { ImgContainer } from "../common/images";
 import { NormalText, SmallText } from "../common/text";
 import CategoriesList from "../common/categoriesList/CategoriesList";
@@ -19,9 +20,12 @@ const ArticlesListSingleHorizontal = ({
     date,
     small_img,
     author
-  }
+  },
+  navigation
 }) => {
   if (!uid || typeof uid !== "string") return null;
+
+  const goToArticle = () => navigation.navigate("Article", { uid, title });
 
   return (
     <View style={styles.container}>
@@ -50,7 +54,9 @@ const ArticlesListSingleHorizontal = ({
         </NormalText>
         <SmallText style={{ marginBottom: 8 }}>{short_description}</SmallText>
         <CategoriesList categories={categories} />
-        <ButtonPrimary right>Read more...</ButtonPrimary>
+        <ButtonPrimary right onPress={goToArticle}>
+          Read more...
+        </ButtonPrimary>
       </View>
     </View>
   );
@@ -109,4 +115,4 @@ ArticlesListSingleHorizontal.propTypes = {
   })
 };
 
-export default React.memo(ArticlesListSingleHorizontal);
+export default React.memo(withNavigation(ArticlesListSingleHorizontal));
