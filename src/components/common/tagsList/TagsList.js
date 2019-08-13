@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     backgroundColor: StylesMain.backgroundColor,
-    ...StylesMain.smallShadow
+    ...StylesMain.shadow
   },
   tag: {
     fontSize: 13,

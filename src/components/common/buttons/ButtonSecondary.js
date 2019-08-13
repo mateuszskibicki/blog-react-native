@@ -34,8 +34,7 @@ const ButtonSecondary = ({
           block && { alignSelf: null, alignItems: "center" },
           small && {
             paddingVertical: 4,
-            paddingHorizontal: 8,
-            marginBottom: 16
+            paddingHorizontal: 8
           },
           mb0 && { marginBottom: 0 }
         ]}
@@ -70,6 +69,7 @@ const styles = StyleSheet.create({
     fontFamily: StylesMain.fontFamily,
     textAlign: "center",
     fontSize: 18,
+    marginBottom: 0,
     padding: 0
   }
 });

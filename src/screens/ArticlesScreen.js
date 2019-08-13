@@ -22,12 +22,15 @@ const ArticlesScreen = ({ articles, getAllArticles, navigation, loading }) => {
   // grab all articles
   useEffect(() => {
     !loading.loading &&
+      (category !== categoryParam ||
+        searchText !== searchTextParam ||
+        Number(currentPage) !== Number(pageParam)) &&
       getAllArticles({
         category: categoryParam,
         searchText: searchTextParam,
         page: pageParam
       });
-  }, []);
+  }, [categoryParam, searchTextParam, pageParam]);
 
   if (!articles[currentPage]) return null;
 

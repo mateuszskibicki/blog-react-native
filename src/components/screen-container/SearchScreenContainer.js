@@ -23,7 +23,7 @@ const SearchScreenContainer = ({ navigation }) => {
     const value = searchText;
     setSearchText("");
     //naviagate to articles with searchText
-    navigation.push("Articles", { page: 1, searchText: value });
+    navigation.navigate("Articles", { page: 1, searchText: value });
   };
 
   return (

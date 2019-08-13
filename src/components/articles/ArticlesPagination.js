@@ -16,7 +16,7 @@ const ArticlesPagination = ({
 
   const onPressBack = () => {
     if (Number(currentPage) !== 1) {
-      navigation.push("Articles", {
+      navigation.navigate("Articles", {
         page: Number(currentPage) - 1,
         category,
         searchText
@@ -26,7 +26,7 @@ const ArticlesPagination = ({
 
   const onPressNext = () => {
     if (Number(currentPage) < Number(totalPages)) {
-      navigation.push("Articles", {
+      navigation.navigate("Articles", {
         page: Number(currentPage) + 1,
         category,
         searchText

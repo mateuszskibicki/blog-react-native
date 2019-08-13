@@ -34,8 +34,7 @@ const ButtonPrimary = ({
           block && { alignSelf: null, alignItems: "center" },
           small && {
             paddingVertical: 4,
-            paddingHorizontal: 8,
-            marginBottom: 16
+            paddingHorizontal: 8
           },
           mb0 && { marginBottom: 0 }
         ]}
@@ -58,6 +57,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     backgroundColor: StylesMain.primaryGreen,
+    borderWidth: 1,
+    borderColor: StylesMain.primaryGreen,
     borderRadius: 5,
     shadowColor: "#000",
     marginBottom: 16,
@@ -69,7 +70,8 @@ const styles = StyleSheet.create({
     fontFamily: StylesMain.fontFamily,
     textAlign: "center",
     fontSize: 18,
-    padding: 0
+    padding: 0,
+    marginBottom: 0
   }
 });
 

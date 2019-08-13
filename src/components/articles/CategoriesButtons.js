@@ -7,121 +7,145 @@ import { MediumText, NormalText } from "../common/text";
 
 const CategoriesButtons = ({ navigation, category, searchText }) => {
   return (
-    <View style={styles.buttonsContainer}>
-      <MediumText bold style={{ width: "100%" }}>
-        Categories:
-      </MediumText>
-      {!category ? (
-        <ButtonPrimary
-          mb0
-          small
-          noContainer
-          onPress={() => navigation.push("Articles", { searchText })}
-        >
-          All
-        </ButtonPrimary>
-      ) : (
-        <ButtonSecondary
-          mb0
-          small
-          noContainer
-          onPress={() => navigation.push("Articles", { searchText })}
-        >
-          All
-        </ButtonSecondary>
-      )}
-      {category && category === "Full-Stack" ? (
-        <ButtonPrimary
-          mb0
-          small
-          noContainer
-          onPress={() =>
-            navigation.push("Articles", { searchText, category: "Full-Stack" })
-          }
-        >
-          Full-Stack
-        </ButtonPrimary>
-      ) : (
-        <ButtonSecondary
-          mb0
-          small
-          noContainer
-          onPress={() =>
-            navigation.push("Articles", { searchText, category: "Full-Stack" })
-          }
-        >
-          Full-Stack
-        </ButtonSecondary>
-      )}
-      {category && category === "Front-End" ? (
-        <ButtonPrimary
-          mb0
-          small
-          noContainer
-          onPress={() =>
-            navigation.push("Articles", { searchText, category: "Front-End" })
-          }
-        >
-          Front-End
-        </ButtonPrimary>
-      ) : (
-        <ButtonSecondary
-          mb0
-          small
-          noContainer
-          onPress={() =>
-            navigation.push("Articles", { searchText, category: "Front-End" })
-          }
-        >
-          Front-End
-        </ButtonSecondary>
-      )}
-      {category && category === "Back-End" ? (
-        <ButtonPrimary
-          mb0
-          small
-          noContainer
-          onPress={() =>
-            navigation.push("Articles", { searchText, category: "Back-End" })
-          }
-        >
-          Back-End
-        </ButtonPrimary>
-      ) : (
-        <ButtonSecondary
-          mb0
-          small
-          noContainer
-          onPress={() =>
-            navigation.push("Articles", { searchText, category: "Back-End" })
-          }
-        >
-          Back-End
-        </ButtonSecondary>
-      )}
-      {category && category === "Other" ? (
-        <ButtonPrimary
-          mb0
-          small
-          noContainer
-          onPress={() =>
-            navigation.push("Articles", { searchText, category: "Other" })
-          }
-        >
-          Other
-        </ButtonPrimary>
-      ) : (
-        <ButtonSecondary
-          mb0
-          small
-          noContainer
-          onPress={() =>
-            navigation.push("Articles", { searchText, category: "Other" })
-          }
-        >
-          Other
-        </ButtonSecondary>
-      )}
+    <>
+      <View style={styles.buttonsContainer}>
+        <MediumText bold style={{ width: "100%" }}>
+          Categories:
+        </MediumText>
+        {!category ? (
+          <ButtonPrimary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", { searchText, category: null })
+            }
+          >
+            All
+          </ButtonPrimary>
+        ) : (
+          <ButtonSecondary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", { searchText, category: null })
+            }
+          >
+            All
+          </ButtonSecondary>
+        )}
+        {category && category === "Full-Stack" ? (
+          <ButtonPrimary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", {
+                searchText,
+                category: "Full-Stack"
+              })
+            }
+          >
+            Full-Stack
+          </ButtonPrimary>
+        ) : (
+          <ButtonSecondary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", {
+                searchText,
+                category: "Full-Stack"
+              })
+            }
+          >
+            Full-Stack
+          </ButtonSecondary>
+        )}
+        {category && category === "Front-End" ? (
+          <ButtonPrimary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", {
+                searchText,
+                category: "Front-End"
+              })
+            }
+          >
+            Front-End
+          </ButtonPrimary>
+        ) : (
+          <ButtonSecondary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", {
+                searchText,
+                category: "Front-End"
+              })
+            }
+          >
+            Front-End
+          </ButtonSecondary>
+        )}
+        {category && category === "Back-End" ? (
+          <ButtonPrimary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", {
+                searchText,
+                category: "Back-End"
+              })
+            }
+          >
+            Back-End
+          </ButtonPrimary>
+        ) : (
+          <ButtonSecondary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", {
+                searchText,
+                category: "Back-End"
+              })
+            }
+          >
+            Back-End
+          </ButtonSecondary>
+        )}
+        {category && category === "Other" ? (
+          <ButtonPrimary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", { searchText, category: "Other" })
+            }
+          >
+            Other
+          </ButtonPrimary>
+        ) : (
+          <ButtonSecondary
+            style={{ marginBottom: 4 }}
+            small
+            noContainer
+            onPress={() =>
+              navigation.navigate("Articles", { searchText, category: "Other" })
+            }
+          >
+            Other
+          </ButtonSecondary>
+        )}
+      </View>
       {searchText && (
         <View style={styles.containerSearchText}>
           <NormalText mb0 secondary bold>
@@ -132,11 +156,13 @@ const CategoriesButtons = ({ navigation, category, searchText }) => {
             small
             name="md-close"
             style={{ marginRight: 0 }}
-            onPress={() => navigation.push("Articles")}
+            onPress={() =>
+              navigation.navigate("Articles", { searchText: null, category })
+            }
           />
         </View>
       )}
-    </View>
+    </>
   );
 };
 
@@ -151,7 +177,7 @@ const styles = StyleSheet.create({
   },
   containerSearchText: {
     width: "100%",
-    marginTop: 32,
+    marginBottom: 32,
     flex: 0,
     justifyContent: "space-between",
     flexDirection: "row"
