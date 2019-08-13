@@ -61,9 +61,8 @@ const ArticlesListSingleVerical = ({
 const styles = StyleSheet.create({
   container: {
     width: "auto",
-    //alignSelf: "center",
     borderRadius: 5,
-    marginBottom: 16,
+    marginBottom: 32,
     marginHorizontal: 16,
     backgroundColor: StylesMain.backgroundColor,
     ...StylesMain.shadow

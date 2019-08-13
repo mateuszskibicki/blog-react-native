@@ -181,7 +181,8 @@ export const getAllArticlesPrismicQuery = async ({
     Prismic.Predicates.at("document.type", "single-article-mobile"),
     {
       page,
-      ...queryCommonPart
+      ...queryCommonPart,
+      pageSize: 2
     }
   );
 };
@@ -207,7 +208,8 @@ export const getAllArticlesByCategoryPrismicQuery = async ({
     ],
     {
       page,
-      ...queryCommonPart
+      ...queryCommonPart,
+      pageSize: 2
     }
   );
 };

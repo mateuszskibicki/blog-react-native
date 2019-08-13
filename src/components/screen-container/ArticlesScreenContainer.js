@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import CategoriesButtons from "../articles/CategoriesButtons";
 import ArticlesFlatList from "../articles/ArticlesFlatList";
+import ArticlesPagination from "../articles/ArticlesPagination";
 
 const ArticlesScreenContainer = ({
   articles,
@@ -16,7 +17,13 @@ const ArticlesScreenContainer = ({
   return (
     <>
       <CategoriesButtons category={category} />
-      <ArticlesFlatList articles={articles} />
+      <ArticlesFlatList articles={articles} totalPages={totalPages} />
+      <ArticlesPagination
+        category={category}
+        searchText={searchText}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
     </>
   );
 };

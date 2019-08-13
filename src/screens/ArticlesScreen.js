@@ -35,6 +35,7 @@ const ArticlesScreen = ({ articles, getAllArticles, navigation }) => {
         category={category}
         searchText={searchText}
         totalPages={totalPages}
+        currentPage={currentPage}
         error={error}
         articles={articles[currentPage]}
       />

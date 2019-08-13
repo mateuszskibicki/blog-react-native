@@ -15,12 +15,6 @@ const ContainerScroll = props => {
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
-          ref={ref => (this.scrollView = ref)}
-          // scroll when error on subscription
-          onContentSizeChange={(contentWidth, contentHeight) => {
-            props.mailchimp.error &&
-              this.scrollView.scrollToEnd({ animated: true });
-          }}
         >
           {props.children}
           <SubscribeMailchimp />

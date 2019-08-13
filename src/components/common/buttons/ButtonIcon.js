@@ -4,7 +4,7 @@ import { TouchableNativeFeedback, View, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import StylesMain from "../../../constants/StylesMain";
 
-const ButtonIcon = ({ onPress, style, small, big, name }) => {
+const ButtonIcon = ({ onPress, style, small, big, name, mb0 }) => {
   //check if necessary exists
   if (!name || !(typeof name === "string")) return null;
 
@@ -27,7 +27,8 @@ const ButtonIcon = ({ onPress, style, small, big, name }) => {
           big && {
             width: 55,
             height: 50
-          }
+          },
+          mb0 && { marginBottom: 0 }
         ]}
       >
         <Ionicons
@@ -70,6 +71,7 @@ ButtonIcon.propTypes = {
   style: PropTypes.object,
   big: PropTypes.bool,
   small: PropTypes.bool,
+  mb0: PropTypes.bool,
   name: PropTypes.string.isRequired
 };
 

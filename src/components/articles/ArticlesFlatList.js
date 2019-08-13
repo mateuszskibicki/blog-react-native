@@ -2,9 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FlatList, StyleSheet } from "react-native";
 
+import { MediumText } from "../common/text";
 import ArticlesListSingleVertical from "./ArticlesListSingleVertical";
 
-const ArticlesFlatList = ({ articles, title }) => {
+const ArticlesFlatList = ({ articles, totalPages }) => {
+  if (Number(totalPages) === 0)
+    return (
+      <MediumText secondary center>
+        404 - no articles found, please try again
+      </MediumText>
+    );
+
   if (!articles || !Array.isArray(articles) || articles.length === 0)
     return null;
 
@@ -54,7 +62,8 @@ ArticlesFlatList.propTypes = {
         })
       })
     })
-  )
+  ),
+  totalPages: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default React.memo(ArticlesFlatList);

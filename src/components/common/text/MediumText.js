@@ -7,7 +7,11 @@ const MediumText = props => {
   //check if necessary exists
   if (
     !props.children ||
-    !(typeof props.children === "string" || typeof props.children === "number")
+    !(
+      typeof props.children === "string" ||
+      typeof props.children === "number" ||
+      typeof props.children === "object"
+    )
   )
     return null;
 
@@ -39,7 +43,6 @@ const styles = StyleSheet.create({
 
 MediumText.propTypes = {
   style: PropTypes.object,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   secondary: PropTypes.bool,
   bold: PropTypes.bool,
   center: PropTypes.bool,

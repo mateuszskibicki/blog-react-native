@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { View, StyleSheet } from "react-native";
 import { withNavigation } from "react-navigation";
 import { ButtonPrimary, ButtonSecondary } from "../common/buttons";
@@ -123,5 +124,10 @@ const styles = StyleSheet.create({
     marginBottom: 32
   }
 });
+
+CategoriesButtons.propTypes = {
+  category: PropTypes.string,
+  navigation: PropTypes.object
+};
 
 export default withNavigation(CategoriesButtons);
