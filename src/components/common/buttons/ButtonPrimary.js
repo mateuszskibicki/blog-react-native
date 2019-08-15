@@ -31,7 +31,11 @@ const ButtonPrimary = ({
           right && { alignSelf: "flex-end" },
           noContainer && { alignSelf: null, flex: 0 },
           center && { alignSelf: "center" },
-          block && { alignSelf: null, alignItems: "center" },
+          block && {
+            alignSelf: null,
+            alignItems: "center",
+            paddingVertical: 16
+          },
           small && {
             paddingVertical: 4,
             paddingHorizontal: 8
@@ -39,11 +43,7 @@ const ButtonPrimary = ({
           mb0 && { marginBottom: 0 }
         ]}
       >
-        <Text
-          style={[styles.text, small && { fontSize: 16, fontWeight: "400" }]}
-        >
-          {children}
-        </Text>
+        <Text style={[styles.text, small && { fontSize: 14 }]}>{children}</Text>
       </View>
     </TouchableNativeFeedback>
   );

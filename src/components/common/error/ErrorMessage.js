@@ -16,14 +16,14 @@ const ErrorMessage = ({ error, style }) => {
 const styles = StyleSheet.create({
   errorContainer: {
     width: "100%",
-    padding: 8,
+    padding: 4,
     backgroundColor: StylesMain.tomatoColor,
     borderRadius: 5,
     ...StylesMain.shadow
   },
   errorText: {
     marginBottom: 0,
-    fontSize: 18,
+    fontSize: 16,
     color: StylesMain.whiteTextColor,
     fontFamily: StylesMain.fontFamily,
     fontWeight: StylesMain.textBoldWeight,

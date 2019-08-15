@@ -5,6 +5,7 @@ import { View, ScrollView, StyleSheet, SafeAreaView } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 import Spinner from "./Spinner";
 import SubscribeMailchimp from "../../subscribe-mailchimp/SubscribeMailchimp";
+import SearchIcon from "../search/SearchIcon";
 
 const ContainerScroll = props => {
   return (
@@ -22,6 +23,7 @@ const ContainerScroll = props => {
           </ScrollView>
         )}
       </View>
+      <SearchIcon />
     </SafeAreaView>
   );
 };

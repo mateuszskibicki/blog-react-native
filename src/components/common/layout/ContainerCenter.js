@@ -4,6 +4,10 @@ import { connect } from "react-redux";
 import { View, StyleSheet } from "react-native";
 import StylesMain from "../../../constants/StylesMain";
 import Spinner from "./Spinner";
+
+//icons
+import SearchIcon from "../search/SearchIcon";
+
 const ContainerCenter = ({ loading, children, style, row, p0 }) => {
   return (
     <View
@@ -15,6 +19,7 @@ const ContainerCenter = ({ loading, children, style, row, p0 }) => {
       ]}
     >
       {loading.loading ? <Spinner /> : children}
+      <SearchIcon />
     </View>
   );
 };
