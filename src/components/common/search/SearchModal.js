@@ -99,7 +99,10 @@ const styles = StyleSheet.create({
 SearchModal.propTypes = {
   loading: PropTypes.shape({
     loading: PropTypes.bool
-  })
+  }),
+  navigation: PropTypes.object,
+  modalVisible: PropTypes.bool,
+  setModalVisible: PropTypes.func
 };
 
 const mapStateToProps = ({ loading }) => {

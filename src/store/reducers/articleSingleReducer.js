@@ -1,6 +1,5 @@
 import {
   GET_ARTICLE_BY_UID,
-  GET_3_LAST_ARTICLES,
   SET_ERROR_SINGLE_ARTICLE_TRUE,
   SET_CURRENT_ARTICLE_UID
 } from "../actions/types";
@@ -21,11 +20,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         currentArticleUID: action.payload.articleUID
-      };
-    case GET_3_LAST_ARTICLES:
-      return {
-        ...state,
-        lastArticles: action.payload.lastArticles
       };
     case GET_ARTICLE_BY_UID:
       return {

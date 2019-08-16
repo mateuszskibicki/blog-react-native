@@ -13,10 +13,10 @@ export const singleArticleHelper = data => {
     uid: data.uid,
     title: TextHelper(articleData.title),
     short_description: TextHelper(articleData.short_description),
-    series: TextHelper(articleData.series),
     categories: TextHelper(articleData.categories),
     tags: TextHelper(articleData.tags),
     date: SmallTextHelper(articleData.date),
+    xs_img: ImgHelper(articleData.xs_img),
     small_img: ImgHelper(articleData.small_img),
     big_img: ImgHelper(articleData.big_img),
     author:

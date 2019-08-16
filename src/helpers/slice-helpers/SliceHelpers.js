@@ -1,8 +1,6 @@
-// import { textBlockSlice } from "./single-slice-helpers/textBlockSlice";
-// import { codeSlice } from "./single-slice-helpers/codeSlice";
-// import { singleMediaSlice } from "./single-slice-helpers/singleMediaSlice";
-// import { multipleMediaSlice } from "./single-slice-helpers/multipleMediaSlice";
-// import { imageSlice } from "./single-slice-helpers/imageSlice";
+import { textBlockSlice } from "./single-slice-helpers/textBlockSlice";
+import { codeSlice } from "./single-slice-helpers/codeSlice";
+import { imageSlice } from "./single-slice-helpers/imageSlice";
 
 // Remove null from array (locally when testing)
 export const filterArray = array => {
@@ -26,13 +24,9 @@ export const sliceHelper = body => {
 
   // eslint-disable-next-line array-callback-return
   slicesData = body.map(slice => {
-    // if (slice.slice_type === "text_block") return textBlockSlice(slice);
-    // if (slice.slice_type === "image") return imageSlice(slice);
-    // if (slice.slice_type === "code_component") return codeSlice(slice);
-    // if (slice.slice_type === "single_media_block")
-    //   return singleMediaSlice(slice);
-    // if (slice.slice_type === "multiple_media_blocks")
-    //   return multipleMediaSlice(slice);
+    if (slice.slice_type === "text_block") return textBlockSlice(slice);
+    if (slice.slice_type === "image") return imageSlice(slice);
+    if (slice.slice_type === "code_component") return codeSlice(slice);
     return null;
   });
 
