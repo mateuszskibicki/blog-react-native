@@ -55,7 +55,7 @@ ArticleHeader.propTypes = {
     uid: PropTypes.string,
     full_name: PropTypes.string,
     short_description: PropTypes.string,
-    img_avatar: PropTypes.shape({
+    image_avatar: PropTypes.shape({
       url: PropTypes.string,
       alt: PropTypes.string
     })

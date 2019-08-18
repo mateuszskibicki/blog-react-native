@@ -1,26 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ArticleHeader from "../article/ArticleHeader";
+import ArticleFooter from "../article/ArticleFooter";
 import { sliceComponentsHelper } from "../../helpers/slice-helpers/SliceComponentsHelpers";
+import ArticlesHorizontalList from "../articles/ArticlesHorizontalList";
 
-const SingleArticleScreenContainer = ({ article } = {}) => {
+const SingleArticleScreenContainer = ({ article, lastThreeArticles } = {}) => {
   if (!article) return null;
 
   const {
-    uid,
     title,
     categories,
     tags,
     short_description,
     date,
-    xs_img,
-    small_img,
     big_img,
     author,
     content
   } = article;
-
-  console.log(article);
 
   return (
     <>
@@ -32,11 +29,19 @@ const SingleArticleScreenContainer = ({ article } = {}) => {
         author={author}
       />
       {sliceComponentsHelper(content)}
+      <ArticleFooter categories={categories} tags={tags} author={author} />
+      {lastThreeArticles && (
+        <ArticlesHorizontalList
+          title="Last 3 articles:"
+          articles={lastThreeArticles}
+        />
+      )}
     </>
   );
 };
 
 SingleArticleScreenContainer.propTypes = {
+  lastThreeArticles: PropTypes.array,
   article: PropTypes.shape({
     uid: PropTypes.string,
     title: PropTypes.string,
@@ -60,7 +65,7 @@ SingleArticleScreenContainer.propTypes = {
       uid: PropTypes.string,
       full_name: PropTypes.string,
       short_description: PropTypes.string,
-      img_avatar: PropTypes.shape({
+      image_avatar: PropTypes.shape({
         url: PropTypes.string,
         alt: PropTypes.string
       })

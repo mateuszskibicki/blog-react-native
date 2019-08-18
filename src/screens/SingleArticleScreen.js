@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withNavigation } from "react-navigation";
 
 import { getArticleByUID } from "../store/actions/article/articleActions";
+import { getAllArticles } from "../store/actions/articles/articlesActions";
 
 import ContainerScroll from "../components/common/layout/ContainerScroll";
 import SingleArticleScreenContainer from "../components/screen-container/SingleArticleScreenContainer";
@@ -12,7 +13,9 @@ const SingleArticleScreen = ({
   navigation,
   loading,
   article,
-  getArticleByUID
+  articles,
+  getArticleByUID,
+  getAllArticles
 }) => {
   const articleUID = navigation.getParam("uid");
 
@@ -20,11 +23,17 @@ const SingleArticleScreen = ({
     if (!article[articleUID] && !loading.loading) {
       getArticleByUID({ articleUID });
     }
-  }, []);
+    if (!articles.lastThree) {
+      getAllArticles({ lastThree: true });
+    }
+  }, [articleUID]);
 
   return (
     <ContainerScroll>
-      <SingleArticleScreenContainer article={article[articleUID]} />
+      <SingleArticleScreenContainer
+        article={article[articleUID]}
+        lastThreeArticles={articles.lastThree}
+      />
     </ContainerScroll>
   );
 };
@@ -36,16 +45,19 @@ SingleArticleScreen.navigationOptions = ({ navigation }) => {
 SingleArticleScreen.propTypes = {
   navigation: PropTypes.object,
   article: PropTypes.object,
+  articles: PropTypes.object,
   loading: PropTypes.object,
-  getArticleByUID: PropTypes.func
+  getArticleByUID: PropTypes.func,
+  getAllArticles: PropTypes.func
 };
 
-const mapStateToProps = ({ loading, article }) => {
-  return { loading, article };
+const mapStateToProps = ({ loading, article, articles }) => {
+  return { loading, article, articles };
 };
 
 const mapDispatchToProps = {
-  getArticleByUID
+  getArticleByUID,
+  getAllArticles
 };
 
 export default connect(

@@ -10,6 +10,7 @@ const ImgRounded = ({
   imageURL,
   left,
   right,
+  xsmall,
   small,
   big,
   mb0
@@ -34,6 +35,7 @@ const ImgRounded = ({
         }}
         style={[
           styles.imageWrapper,
+          xsmall && { height: 100, width: 100 },
           small && { height: 150, width: 150 },
           big && { height: 350, width: 350 },
           imageWrapper
@@ -68,6 +70,7 @@ ImgRounded.propTypes = {
   imageWrapper: PropTypes.object,
   imageStyle: PropTypes.object,
   imageURL: PropTypes.string,
+  xsmall: PropTypes.bool,
   small: PropTypes.bool,
   big: PropTypes.bool,
   left: PropTypes.bool,
